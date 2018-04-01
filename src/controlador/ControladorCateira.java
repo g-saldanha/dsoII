@@ -14,7 +14,7 @@ public class ControladorCateira {
 
     public static ControladorCateira getInstanceCarteira(){
         if (instanceCarteira == null) {
-            instanceCarteira = new ControladorCateira();
+            instanceCarteira = new ControladorCateira();aa
         }
         return instanceCarteira;
     }
