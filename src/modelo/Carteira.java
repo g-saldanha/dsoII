@@ -3,24 +3,37 @@ package modelo;
 import controlador.ControladorCateira;
 
 public class Carteira {
-    private Usuario usuario;
+    private String cpf;
     private String numeroDaCarteira;
     private Acoes[] acoes;
     private double saldo;
     private Transacao[] transacoes;
     private Historico[] historicoAvaliacoes;
 
-    public Carteira(Usuario usuario) {
-        this.usuario = usuario;
-        this.numeroDaCarteira = numeroDaCarteira;
+    public Carteira(String cpf) {
+        this.cpf = cpf;
+        this.numeroDaCarteira = Integer.toString(this.hashCode());
         this.acoes = null;
         this.saldo = 0;
         this.transacoes = null;
         this.historicoAvaliacoes = null;
     }
 
+    
 
-    public String getNumeroDaCarteira() {
+    public String getCpf() {
+		return cpf;
+	}
+
+
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+
+
+	public String getNumeroDaCarteira() {
         return numeroDaCarteira;
     }
 

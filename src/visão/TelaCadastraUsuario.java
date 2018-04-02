@@ -16,7 +16,6 @@ public class TelaCadastraUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField jtfCpf;
-	private JTextField jtfNome;
 
 
 	/**
@@ -27,7 +26,7 @@ public class TelaCadastraUsuario extends JFrame {
 		//this.setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(false);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 444, 192);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -38,22 +37,13 @@ public class TelaCadastraUsuario extends JFrame {
 		lblCpf.setBounds(34, 38, 56, 16);
 		contentPane.add(lblCpf);
 		
-		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(34, 95, 56, 16);
-		contentPane.add(lblNome);
-		
 		jtfCpf = new JTextField();
 		jtfCpf.setBounds(147, 35, 195, 22);
 		contentPane.add(jtfCpf);
 		jtfCpf.setColumns(10);
 		
-		jtfNome = new JTextField();
-		jtfNome.setBounds(147, 92, 195, 22);
-		contentPane.add(jtfNome);
-		jtfNome.setColumns(10);
-		
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(68, 174, 97, 25);
+		btnSalvar.setBounds(68, 87, 97, 25);
 		contentPane.add(btnSalvar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -62,7 +52,7 @@ public class TelaCadastraUsuario extends JFrame {
 				dispose();
 			}
 		});
-		btnCancelar.setBounds(244, 174, 97, 25);
+		btnCancelar.setBounds(245, 87, 97, 25);
 		contentPane.add(btnCancelar);
 	}
 }

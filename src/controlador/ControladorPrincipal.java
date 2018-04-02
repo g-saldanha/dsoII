@@ -1,5 +1,8 @@
 package controlador;
 
+import javax.swing.JOptionPane;
+
+import javafx.scene.control.Alert;
 import visão.TelaCadastraUsuario;
 import visão.TelaLogin;
 import visão.TelaPrincipal;
@@ -46,13 +49,12 @@ public class ControladorPrincipal {
 		telaLogin.setVisible(true);		
 	}
 
-	public void verificaUsuario(String text) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void abreTelaCadastro() {
 		telaCadastraUsuario.setVisible(true);		
+	}
+	
+	public void carregaUsuario(String text) throws Exception {
+			ControladorCarteira.getInstanceCarteira().carregaUsuario(text);				
 	}
 
 }

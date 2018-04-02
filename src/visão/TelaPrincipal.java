@@ -26,7 +26,7 @@ public class TelaPrincipal extends JFrame {
 	public TelaPrincipal() {
 		
 		//instanciando a Tela Principal
-		//this.setLocationRelativeTo(null);
+		
 		setTitle("Carteira de A\u00E7\u00F5es");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
@@ -48,8 +48,7 @@ public class TelaPrincipal extends JFrame {
 		JMenuItem jMenuAbrirCarteira = new JMenuItem("Abrir Carteira");
 		//Implementando a ação de clique no menu Abrir Carteira
 		jMenuAbrirCarteira.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
+			public void actionPerformed(ActionEvent arg0) {				
 				ControladorPrincipal.getInstance().login();
 			}
 		});

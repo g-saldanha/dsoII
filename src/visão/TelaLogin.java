@@ -11,6 +11,7 @@ import javax.swing.border.EmptyBorder;
 import controlador.ControladorPrincipal;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -46,11 +47,11 @@ public class TelaLogin extends JDialog {
 		}
 		{
 			JButton okButton = new JButton("OK");
-			okButton.setBounds(110, 90, 49, 25);
+			okButton.setBounds(110, 90, 71, 25);
 			contentPanel.add(okButton);
 			okButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					ControladorPrincipal.getInstance().verificaUsuario(jtfCpfLogin.getText());
+						ControladorPrincipal.getInstance().carregaUsuario(jtfCpfLogin.getText());
 				}
 			});
 			okButton.setActionCommand("OK");
@@ -58,10 +59,11 @@ public class TelaLogin extends JDialog {
 		}
 		{
 			JButton cancelButton = new JButton("Cancel");
-			cancelButton.setBounds(241, 90, 71, 25);
+			cancelButton.setBounds(227, 90, 85, 25);
 			contentPanel.add(cancelButton);
 			cancelButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					jtfCpfLogin.setText("");
 					dispose();
 				}
 			});
