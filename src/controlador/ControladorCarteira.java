@@ -32,7 +32,7 @@ public class ControladorCarteira {
         getListaDeCarteiras().add(new Carteira(cpf));
     }
 
-	public void carregaUsuario(String text) throws Exception {
+	public void carregaUsuario(String text) {
 		for(Carteira carteira: listaDeCarteiras) {
 			if(carteira.getCpf().equals(text)) {
 				carteiraEmUSo = carteira;

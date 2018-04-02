@@ -1,6 +1,5 @@
 package modelo;
 
-import controlador.ControladorCateira;
 
 public class Carteira {
     private String cpf;
@@ -8,7 +7,7 @@ public class Carteira {
     private Acoes[] acoes;
     private double saldo;
     private Transacao[] transacoes;
-    private Historico[] historicoAvaliacoes;
+    //private Historico[] historicoAvaliacoes;
 
     public Carteira(String cpf) {
         this.cpf = cpf;
@@ -16,7 +15,7 @@ public class Carteira {
         this.acoes = null;
         this.saldo = 0;
         this.transacoes = null;
-        this.historicoAvaliacoes = null;
+        //this.historicoAvaliacoes = null;
     }
 
     

@@ -53,8 +53,13 @@ public class ControladorPrincipal {
 		telaCadastraUsuario.setVisible(true);		
 	}
 	
-	public void carregaUsuario(String text) throws Exception {
+	public void carregaUsuario(String text) {
 			ControladorCarteira.getInstanceCarteira().carregaUsuario(text);				
+	}
+
+	public void cadastraUsuario(String text) {
+		ControladorCarteira.getInstanceCarteira().cadastrarCarteira(text);
+		
 	}
 
 }

@@ -63,6 +63,11 @@ public class TelaPrincipal extends JFrame {
 		mnInicio.add(jMenuItemUsuario);
 		
 		JMenuItem jMenuItemTransacoes = new JMenuItem("Registrar Transa\u00E7\u00F5es");
+		jMenuItemTransacoes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new CadastraTransacoes();
+			}
+		});
 		mnInicio.add(jMenuItemTransacoes);
 		
 		JMenu mnEditar = new JMenu("Editar");

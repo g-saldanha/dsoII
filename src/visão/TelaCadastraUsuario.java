@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorPrincipal;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollBar;
 import javax.swing.JTextField;
@@ -43,6 +46,11 @@ public class TelaCadastraUsuario extends JFrame {
 		jtfCpf.setColumns(10);
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ControladorPrincipal.getInstance().cadastraUsuario(jtfCpf.getText());
+			}
+		});
 		btnSalvar.setBounds(68, 87, 97, 25);
 		contentPane.add(btnSalvar);
 		
