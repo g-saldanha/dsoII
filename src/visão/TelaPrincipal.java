@@ -6,53 +6,65 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ControladorPrincipal;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class TelaPrincipal extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaPrincipal frame = new TelaPrincipal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public TelaPrincipal() {
+		
+		//instanciando a Tela Principal
+		//this.setLocationRelativeTo(null);
 		setTitle("Carteira de A\u00E7\u00F5es");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
+		//Instanciando um painel e adicionando ele a tela
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		this.setVisible(false);
 		
+		//Criando a barra de menu Principal
 		JMenuBar jmenuPrincipal = new JMenuBar();
 		contentPane.add(jmenuPrincipal, BorderLayout.NORTH);
 		
-		JMenu mnCadastrar = new JMenu("Cadastrar");
-		jmenuPrincipal.add(mnCadastrar);
+		//Criando os itens de Menu
+		JMenu mnInicio = new JMenu("Inicio");
+		jmenuPrincipal.add(mnInicio);
 		
-		JMenuItem jMenuItemUsuario = new JMenuItem("Usu\u00E1rio");
-		mnCadastrar.add(jMenuItemUsuario);
+		JMenuItem jMenuAbrirCarteira = new JMenuItem("Abrir Carteira");
+		//Implementando a ação de clique no menu Abrir Carteira
+		jMenuAbrirCarteira.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				ControladorPrincipal.getInstance().login();
+			}
+		});
+		mnInicio.add(jMenuAbrirCarteira);
 		
-		JMenuItem jMenuItemTransacoes = new JMenuItem("Transa\u00E7\u00F5es");
-		mnCadastrar.add(jMenuItemTransacoes);
+		JMenuItem jMenuItemUsuario = new JMenuItem("Cadastrar Usu\u00E1rio");
+		jMenuItemUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ControladorPrincipal.getInstance().abreTelaCadastro();
+			}
+		});
+		mnInicio.add(jMenuItemUsuario);
+		
+		JMenuItem jMenuItemTransacoes = new JMenuItem("Registrar Transa\u00E7\u00F5es");
+		mnInicio.add(jMenuItemTransacoes);
 		
 		JMenu mnEditar = new JMenu("Editar");
 		jmenuPrincipal.add(mnEditar);
