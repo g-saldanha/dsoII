@@ -70,12 +70,6 @@ public class TelaPrincipal extends JFrame {
 		});
 		mnInicio.add(jMenuItemTransacoes);
 		
-		JMenu mnEditar = new JMenu("Editar");
-		jmenuPrincipal.add(mnEditar);
-		
-		JMenuItem jMenuEditarUsuario = new JMenuItem("Usuario");
-		mnEditar.add(jMenuEditarUsuario);
-		
 		JMenu mnRelatrios = new JMenu("Relat\u00F3rios");
 		jmenuPrincipal.add(mnRelatrios);
 		
