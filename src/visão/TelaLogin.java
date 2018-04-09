@@ -70,5 +70,14 @@ public class TelaLogin extends JDialog {
 			cancelButton.setActionCommand("Cancel");
 		}
 	}
+	
+	public void mensagemDeLogin(Boolean localizou) {
+		if(localizou) {
+			JOptionPane.showMessageDialog(null, "Usuário Carregado com sucesso!");
+			jtfCpfLogin.setText("");
+		}else {
+			JOptionPane.showMessageDialog(null, "Usuário não encontrado");
+		}
+	}
 
 }

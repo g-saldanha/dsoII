@@ -1,8 +1,6 @@
 package controlador;
 
-import javax.swing.JOptionPane;
-
-import javafx.scene.control.Alert;
+import visão.TelaCadastraTransacoes;
 import visão.TelaCadastraUsuario;
 import visão.TelaLogin;
 import visão.TelaPrincipal;
@@ -13,6 +11,7 @@ public class ControladorPrincipal {
 	private TelaPrincipal telaPrincipal;
 	private TelaLogin telaLogin;
 	private TelaCadastraUsuario telaCadastraUsuario;
+	private TelaCadastraTransacoes telaCadastraTransacoes;
 	
 	
 	private ControladorPrincipal() {
@@ -20,6 +19,7 @@ public class ControladorPrincipal {
 		this.telaPrincipal = new TelaPrincipal();
 		this.telaLogin = new TelaLogin();
 		this.telaCadastraUsuario = new TelaCadastraUsuario();
+		this.telaCadastraTransacoes = new TelaCadastraTransacoes();
 		this.centralizaTelas();
 		
 	}
@@ -38,6 +38,7 @@ public class ControladorPrincipal {
 		telaPrincipal.setLocationRelativeTo(null);
 		telaLogin.setLocationRelativeTo(null);
 		telaCadastraUsuario.setLocationRelativeTo(null);
+		telaCadastraTransacoes.setLocationRelativeTo(null);
 	}
 	//Abre a Tela Inicial
 	public void abreTelaPrincipal() {		
@@ -54,11 +55,24 @@ public class ControladorPrincipal {
 	}
 	
 	public void carregaUsuario(String text) {
-			ControladorCarteira.getInstanceCarteira().carregaUsuario(text);				
+			if(ControladorCarteira.getInstanceCarteira().carregaUsuario(text)) {
+				telaLogin.mensagemDeLogin(true);
+			}else {
+				telaLogin.mensagemDeLogin(false);
+			}				
 	}
 
 	public void cadastraUsuario(String text) {
-		ControladorCarteira.getInstanceCarteira().cadastrarCarteira(text);
+		if(ControladorCarteira.getInstanceCarteira().cadastrarCarteira(text)) {
+			telaCadastraUsuario.mensagemDeCadastro(true);
+		}else {
+			telaCadastraUsuario.mensagemDeCadastro(false);
+		}	
+		
+	}
+
+	public void abreTelaCadastraTransacoes() {
+		telaCadastraTransacoes.setVisible(true);
 		
 	}
 

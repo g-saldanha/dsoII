@@ -65,7 +65,7 @@ public class TelaPrincipal extends JFrame {
 		JMenuItem jMenuItemTransacoes = new JMenuItem("Registrar Transa\u00E7\u00F5es");
 		jMenuItemTransacoes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new CadastraTransacoes();
+				ControladorPrincipal.getInstance().abreTelaCadastraTransacoes();
 			}
 		});
 		mnInicio.add(jMenuItemTransacoes);

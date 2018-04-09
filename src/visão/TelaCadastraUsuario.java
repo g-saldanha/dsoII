@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import controlador.ControladorPrincipal;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -58,9 +59,19 @@ public class TelaCadastraUsuario extends JFrame {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
+				jtfCpf.setText("");
 			}
 		});
 		btnCancelar.setBounds(245, 87, 97, 25);
 		contentPane.add(btnCancelar);
+	}
+	
+	public void mensagemDeCadastro(Boolean cadastrou) {
+		if(cadastrou) {
+			JOptionPane.showMessageDialog(null, "Usuário Cadastrado com sucesso!");
+			jtfCpf.setText("");
+		}else {
+			JOptionPane.showMessageDialog(null, "Ja existe um usuário Cadastrado!");
+		}
 	}
 }

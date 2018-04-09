@@ -27,7 +27,8 @@ public class TelaCadastraTransacoes extends JFrame {
 	 */
 	public TelaCadastraTransacoes() {
 		setTitle("Transa\u00E7\u00F5es");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setVisible(false);
 		setBounds(100, 100, 892, 687);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -112,6 +113,7 @@ public class TelaCadastraTransacoes extends JFrame {
 		JButton jbtCancelar = new JButton("Cancelar");
 		jbtCancelar.setBounds(502, 555, 97, 25);
 		contentPane.add(jbtCancelar);
+		
 		
 	}
 }
