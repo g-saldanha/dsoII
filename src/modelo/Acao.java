@@ -6,6 +6,15 @@ public class Acao {
     private double valorUnitario;
     private double imposto;
     private double corretagem;
+    private String cpf;
+
+    public Acao(String nome, int qtd, double valorUnitario, double corretagem, String cpf) {
+        this.qtd = qtd;
+        this.valorUnitario = valorUnitario;
+        this.corretagem = corretagem;
+        this.cpf = cpf;
+        this.nome = nome;
+    }
 
     public String getNome() {
         return nome;
@@ -45,5 +54,13 @@ public class Acao {
 
     public void setCorretagem(double corretagem) {
         this.corretagem = corretagem;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 }

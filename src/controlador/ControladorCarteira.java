@@ -3,6 +3,7 @@ package controlador;
 import Recursos.Mensagens;
 import modelo.Acao;
 import modelo.Carteira;
+import modelo.Transacao;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -73,6 +74,20 @@ public class ControladorCarteira {
 			jtfCpf = new JTable(dados, colunas);
 			return jtfCpf;
 		}
+    }
+
+	public static Object cadAcao(Object tipoDeTransacao, Object acaoSelecionada, String qtd, String imposto, String corretagem, String valorUnitario) {
+//		Caso não exita nenhum perfil Logado, então ele envia uma mensagem pedindo para Logar-se
+    	if (carteiraEmUSo == null){
+    		return Mensagens.MSG_CARTEIRA_INEXISTENTE;
+		}
+//    	Se ao registrar a opção de COMPRA e apertar no Botão de Transação, essa condição vai cadastrar uma Ação de comprar na carteira do usuário atual.
+		else if (tipoDeTransacao.equals(Mensagens.COMPRAR)) {
+			Acao acaoCompra = new Acao(acaoSelecionada.toString(), Integer.parseInt(qtd), Double.parseDouble(valorUnitario), Double.parseDouble(corretagem), carteiraEmUSo.getCpf());
+			carteiraEmUSo.getAcoes().add(acaoCompra);
+			return Mensagens.ACAO_COMPRADA_COM_SUCESSO;
+		}
+		return null;
     }
 
 	public boolean cadastrarCarteira(String cpf){
