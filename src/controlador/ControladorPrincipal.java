@@ -1,9 +1,6 @@
 package controlador;
 
-import visao.TelaCadastraTransacoes;
-import visao.TelaCadastraUsuario;
-import visao.TelaLogin;
-import visao.TelaPrincipal;
+import visao.*;
 
 public class ControladorPrincipal {
 	
