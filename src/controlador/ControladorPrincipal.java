@@ -1,9 +1,9 @@
 package controlador;
 
-import visão.TelaCadastraTransacoes;
-import visão.TelaCadastraUsuario;
-import visão.TelaLogin;
-import visão.TelaPrincipal;
+import visao.TelaCadastraTransacoes;
+import visao.TelaCadastraUsuario;
+import visao.TelaLogin;
+import visao.TelaPrincipal;
 
 public class ControladorPrincipal {
 	
@@ -57,6 +57,7 @@ public class ControladorPrincipal {
 	public void carregaUsuario(String text) {
 			if(ControladorCarteira.getInstanceCarteira().carregaUsuario(text)) {
 				telaLogin.mensagemDeLogin(true);
+				telaLogin.setVisible(false);
 			}else {
 				telaLogin.mensagemDeLogin(false);
 			}				
@@ -65,6 +66,7 @@ public class ControladorPrincipal {
 	public void cadastraUsuario(String text) {
 		if(ControladorCarteira.getInstanceCarteira().cadastrarCarteira(text)) {
 			telaCadastraUsuario.mensagemDeCadastro(true);
+			telaCadastraUsuario.setVisible(false);
 		}else {
 			telaCadastraUsuario.mensagemDeCadastro(false);
 		}	

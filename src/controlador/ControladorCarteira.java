@@ -1,13 +1,18 @@
 package controlador;
 
+import Recursos.Mensagens;
+import modelo.Acao;
 import modelo.Carteira;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class ControladorCarteira {
     private static ControladorCarteira instanceCarteira;
     private static ArrayList<Carteira> listaDeCarteiras;
-    private Carteira carteiraEmUSo;
+    private static Carteira carteiraEmUSo;
 
     private ControladorCarteira() {
         listaDeCarteiras = new ArrayList();
@@ -28,7 +33,49 @@ public class ControladorCarteira {
         ControladorCarteira.listaDeCarteiras = listaDeCarteiras;
     }
 
-    public boolean cadastrarCarteira(String cpf){
+	public static JTable popularCamposDaTabela() {
+		JTable jtfCpf;
+		if (carteiraEmUSo == null || carteiraEmUSo.getAcoes().size() == 0 ){
+			jtfCpf =  new JTable() {
+				public boolean getScrollableTracksViewportHeight() {
+					if(getParent() instanceof JViewport)
+						return(((JViewport)getParent()).getHeight() > getPreferredSize().height);
+
+					return super.getScrollableTracksViewportHeight();
+				}
+
+				protected void paintComponent(Graphics g) {
+					super.paintComponent(g);
+					if(getRowCount() == 0) {
+						Graphics2D g2d = (Graphics2D) g;
+						g2d.setColor(Color.BLACK);
+						g2d.drawString("Nenhuma Ação na foi comprada ou vendida para este usuário!",10,20);
+					}
+				}
+			};
+
+			return jtfCpf;
+		} else {
+			String[] colunas = {
+					Mensagens.ACAO, Mensagens.VALOR_UNITARIO, Mensagens.QTD, Mensagens.CORRETAGEM
+			};
+
+			Object[][] dados = new Object[carteiraEmUSo.getAcoes().size()][4];
+			int atual = 0;
+			for (Acao acao : carteiraEmUSo.getAcoes()) {
+				dados[atual][0] = acao.getNome();
+				dados[atual][1] = "R$" + acao.getValorUnitario();
+				dados[atual][2] = acao.getQtd();
+				dados[atual][0] = acao.getCorretagem() * 100 + "%";
+				atual++;
+			}
+
+			jtfCpf = new JTable(dados, colunas);
+			return jtfCpf;
+		}
+    }
+
+	public boolean cadastrarCarteira(String cpf){
     	if(!existeUsuario(cpf)) {
     		getListaDeCarteiras().add(new Carteira(cpf));
     		return true;

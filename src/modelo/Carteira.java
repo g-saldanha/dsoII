@@ -1,17 +1,19 @@
 package modelo;
 
 
+import java.util.ArrayList;
+
 public class Carteira {
     private String cpf;
     private String numeroDaCarteira;
-    private Acoes[] acoes;
+    private ArrayList<Acao> acoes;
     private double saldo;
     private Transacao[] transacoes;
 
     public Carteira(String cpf) {
         this.cpf = cpf;
         this.numeroDaCarteira = Integer.toString(this.hashCode());
-        this.acoes = null;
+        this.acoes = new ArrayList<>();
         this.saldo = 0;
         this.transacoes = null;
     }
@@ -38,11 +40,11 @@ public class Carteira {
         this.numeroDaCarteira = numeroDaCarteira;
     }
 
-    public Acoes[] getAcoes() {
+    public ArrayList<Acao> getAcoes() {
         return acoes;
     }
 
-    public void setAcoes(Acoes[] acoes) {
+    public void setAcoes(ArrayList<Acao> acoes) {
         this.acoes = acoes;
     }
 
@@ -58,7 +60,7 @@ public class Carteira {
 
     }
 
-    private void avaliarAcao(Acoes[] atuais) {
+    private void avaliarAcao(Acao[] atuais) {
     }
 
 }
