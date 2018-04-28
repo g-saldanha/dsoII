@@ -1,5 +1,10 @@
 package controlador;
 
+import javax.swing.JOptionPane;
+
+import com.sun.corba.se.spi.orbutil.fsm.State;
+
+import Recursos.Mensagens;
 import visao.*;
 
 public class ControladorPrincipal {
@@ -53,19 +58,19 @@ public class ControladorPrincipal {
 	
 	public void carregaUsuario(String text) {
 			if(ControladorCarteira.getInstanceCarteira().carregaUsuario(text)) {
-				telaLogin.mensagemDeLogin(true);
+				JOptionPane.showMessageDialog(null, Mensagens.USUARIO_CARREGADO);
 				telaLogin.setVisible(false);
 			}else {
-				telaLogin.mensagemDeLogin(false);
+				JOptionPane.showMessageDialog(null, Mensagens.USUARIO_NÃO_ENCONTRADO);
 			}				
 	}
 
 	public void cadastraUsuario(String text) {
 		if(ControladorCarteira.getInstanceCarteira().cadastrarCarteira(text)) {
-			telaCadastraUsuario.mensagemDeCadastro(true);
+			JOptionPane.showMessageDialog(null, Mensagens.USUARIO_CADASTRADO); 
 			telaCadastraUsuario.setVisible(false);
 		}else {
-			telaCadastraUsuario.mensagemDeCadastro(false);
+			JOptionPane.showMessageDialog(null, Mensagens.USUARIO_EXISTENTE); 
 		}	
 		
 	}

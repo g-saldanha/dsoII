@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Recursos.Mensagens;
 import controlador.ControladorPrincipal;
 
 import javax.swing.JLabel;
@@ -46,7 +47,7 @@ public class TelaCadastraUsuario extends JFrame {
 		contentPane.add(jtfCpf);
 		jtfCpf.setColumns(10);
 		
-		JButton btnSalvar = new JButton("Salvar");
+		JButton btnSalvar = new JButton(Mensagens.SALVAR);
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorPrincipal.getInstance().cadastraUsuario(jtfCpf.getText());
@@ -55,7 +56,7 @@ public class TelaCadastraUsuario extends JFrame {
 		btnSalvar.setBounds(68, 87, 97, 25);
 		contentPane.add(btnSalvar);
 		
-		JButton btnCancelar = new JButton("Cancelar");
+		JButton btnCancelar = new JButton(Mensagens.CANCELAR);
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
@@ -64,14 +65,5 @@ public class TelaCadastraUsuario extends JFrame {
 		});
 		btnCancelar.setBounds(245, 87, 97, 25);
 		contentPane.add(btnCancelar);
-	}
-	
-	public void mensagemDeCadastro(Boolean cadastrou) {
-		if(cadastrou) {
-			JOptionPane.showMessageDialog(null, "Usu�rio Cadastrado com sucesso!");
-			jtfCpf.setText("");
-		}else {
-			JOptionPane.showMessageDialog(null, "Ja existe um usu�rio Cadastrado!");
-		}
 	}
 }

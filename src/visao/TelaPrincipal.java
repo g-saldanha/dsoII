@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Recursos.Mensagens;
 import controlador.ControladorPrincipal;
 
 import javax.swing.JMenuBar;
@@ -27,7 +28,7 @@ public class TelaPrincipal extends JFrame {
 		
 		//instanciando a Tela Principal
 		
-		setTitle("Carteira de A\u00E7\u00F5es");
+		setTitle(Mensagens.CARTEIRA_DE_ACOES);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		//Instanciando um painel e adicionando ele a tela
@@ -42,10 +43,10 @@ public class TelaPrincipal extends JFrame {
 		contentPane.add(jmenuPrincipal, BorderLayout.NORTH);
 		
 		//Criando os itens de Menu
-		JMenu mnInicio = new JMenu("Inicio");
+		JMenu mnInicio = new JMenu(Mensagens.INICIO);
 		jmenuPrincipal.add(mnInicio);
 		
-		JMenuItem jMenuAbrirCarteira = new JMenuItem("Abrir Carteira");
+		JMenuItem jMenuAbrirCarteira = new JMenuItem(Mensagens.ABRIR_CARTEIRA);
 		//Implementando a a��o de clique no menu Abrir Carteira
 		jMenuAbrirCarteira.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {				
@@ -54,7 +55,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		mnInicio.add(jMenuAbrirCarteira);
 		
-		JMenuItem jMenuItemUsuario = new JMenuItem("Cadastrar Usu\u00E1rio");
+		JMenuItem jMenuItemUsuario = new JMenuItem(Mensagens.CADASTRAR_USUARIO);
 		jMenuItemUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorPrincipal.getInstance().abreTelaCadastro();
@@ -62,7 +63,7 @@ public class TelaPrincipal extends JFrame {
 		});
 		mnInicio.add(jMenuItemUsuario);
 		
-		JMenuItem jMenuItemTransacoes = new JMenuItem("Registrar Transa\u00E7\u00F5es");
+		JMenuItem jMenuItemTransacoes = new JMenuItem(Mensagens.REGISTRAR_TRANSACAO);
 		jMenuItemTransacoes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ControladorPrincipal.getInstance().abreTelaCadastraTransacoes();
@@ -70,16 +71,16 @@ public class TelaPrincipal extends JFrame {
 		});
 		mnInicio.add(jMenuItemTransacoes);
 		
-		JMenu mnRelatrios = new JMenu("Relat\u00F3rios");
+		JMenu mnRelatrios = new JMenu(Mensagens.RELATORIOS);
 		jmenuPrincipal.add(mnRelatrios);
 		
-		JMenuItem jMenuRelGeral = new JMenuItem("Geral");
+		JMenuItem jMenuRelGeral = new JMenuItem(Mensagens.GERAL);
 		mnRelatrios.add(jMenuRelGeral);
 		
-		JMenuItem jMenuRelPeriodo = new JMenuItem("Por Per\u00EDodo");
+		JMenuItem jMenuRelPeriodo = new JMenuItem(Mensagens.POR_PERIODO);
 		mnRelatrios.add(jMenuRelPeriodo);
 		
-		JMenuItem mntmPorAo = new JMenuItem("Por A\u00E7\u00E3o");
+		JMenuItem mntmPorAo = new JMenuItem(Mensagens.POR_ACAO);
 		mnRelatrios.add(mntmPorAo);
 	}
 
