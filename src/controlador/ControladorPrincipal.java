@@ -20,8 +20,7 @@ public class ControladorPrincipal {
 		
 		this.telaPrincipal = new TelaPrincipal();
 		this.telaLogin = new TelaLogin();
-		this.telaCadastraUsuario = new TelaCadastraUsuario();
-		this.telaCadastraTransacoes = new TelaCadastraTransacoes();
+		this.telaCadastraUsuario = new TelaCadastraUsuario();		
 		this.centralizaTelas();
 		
 	}
@@ -40,7 +39,6 @@ public class ControladorPrincipal {
 		telaPrincipal.setLocationRelativeTo(null);
 		telaLogin.setLocationRelativeTo(null);
 		telaCadastraUsuario.setLocationRelativeTo(null);
-		telaCadastraTransacoes.setLocationRelativeTo(null);
 	}
 	//Abre a Tela Inicial
 	public void abreTelaPrincipal() {		
@@ -60,8 +58,11 @@ public class ControladorPrincipal {
 			if(ControladorCarteira.getInstanceCarteira().carregaUsuario(text)) {
 				JOptionPane.showMessageDialog(null, Mensagens.USUARIO_CARREGADO);
 				telaLogin.setVisible(false);
+				this.telaCadastraTransacoes = new TelaCadastraTransacoes();
+				telaCadastraTransacoes.setLocationRelativeTo(null);
+				telaCadastraTransacoes.setVisible(true);
 			}else {
-				JOptionPane.showMessageDialog(null, Mensagens.USUARIO_NÃO_ENCONTRADO);
+				JOptionPane.showMessageDialog(null, Mensagens.USUARIO_NAO_ENCONTRADO);
 			}				
 	}
 

@@ -15,9 +15,12 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.TableModel;
 
 import Recursos.Mensagens;
 import controlador.ControladorCarteira;
+import modelo.TableModelAcoes;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -48,12 +51,9 @@ public class TelaCadastraTransacoes extends JFrame {
         lblResumoDaCarteira.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblResumoDaCarteira);
 
-        jtpCarteira = new JTable();
-        popularCampos();
-        jtpCarteira.setPreferredScrollableViewportSize(new Dimension(500,300));
-        jtpCarteira.setFillsViewportHeight(true);
         
-        tableResumo = new JTable();
+        //Criei um TableModel e Apliquei a tabela 
+        tableResumo = new JTable(TableModelAcoes.getInstance());
         tableResumo.setBounds(66, 54, 852, 203);
         contentPane.add(tableResumo);
 
@@ -149,7 +149,8 @@ public class TelaCadastraTransacoes extends JFrame {
     }
 
     private void popularCampos() {
-        this.jtpCarteira = ControladorCarteira.popularCamposDaTabela();
+        //this.jtpCarteira = ControladorCarteira.popularCamposDaTabela();
+        ControladorCarteira.popularCamposDaTabela();
     }
 
 

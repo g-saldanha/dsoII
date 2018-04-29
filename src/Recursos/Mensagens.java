@@ -17,6 +17,7 @@ public class Mensagens {
     public static final String INICIO = "Início";
     public static final String LOGIN = "Login";
     public static final String MSG_CARTEIRA_INEXISTENTE = "Não existe Login, por favor faça o Login para poder proceder";
+    public static final String NOME = "Nome";
     public static final String OK = "Ok";
     public static final String POR_ACAO = "Por Ação";
     public static final String POR_PERIODO = "Por Período";

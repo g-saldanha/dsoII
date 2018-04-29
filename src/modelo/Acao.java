@@ -7,6 +7,7 @@ public class Acao {
     private double imposto;
     private double corretagem;
     private String cpf;
+    private Double total;
 
     public Acao(String nome, int qtd, double valorUnitario, double corretagem, String cpf) {
         this.qtd = qtd;
@@ -63,4 +64,14 @@ public class Acao {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+    
+    
 }

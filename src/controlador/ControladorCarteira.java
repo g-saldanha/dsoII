@@ -3,6 +3,7 @@ package controlador;
 import Recursos.Mensagens;
 import modelo.Acao;
 import modelo.Carteira;
+import modelo.TableModelAcoes;
 import modelo.Transacao;
 
 import javax.swing.*;
@@ -34,7 +35,18 @@ public class ControladorCarteira {
         ControladorCarteira.listaDeCarteiras = listaDeCarteiras;
     }
 
-	public static JTable popularCamposDaTabela() {
+	public static void popularCamposDaTabela() {
+		if (carteiraEmUSo.getAcoes().size() == 0 ){
+			TableModelAcoes.getInstance().setAcoes(null);
+	        TableModelAcoes.getInstance().fireTableDataChanged();
+			//JOptionPane.showMessageDialog(null, Mensagens.MSG_CARTEIRA_INEXISTENTE);
+		}else {
+			TableModelAcoes.getInstance().setAcoes(carteiraEmUSo.getAcoes());
+			TableModelAcoes.getInstance().fireTableDataChanged();			
+		}
+		
+		
+		/*
 		JTable jtfCpf;
 		if (carteiraEmUSo == null || carteiraEmUSo.getAcoes().size() == 0 ){
 			jtfCpf =  new JTable() {
@@ -74,6 +86,7 @@ public class ControladorCarteira {
 			jtfCpf = new JTable(dados, colunas);
 			return jtfCpf;
 		}
+		*/
     }
 
 	public static Object cadAcao(Object tipoDeTransacao, Object acaoSelecionada, String qtd, String imposto, String corretagem, String valorUnitario) {
