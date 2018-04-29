@@ -76,9 +76,4 @@ public class ControladorPrincipal {
 		
 	}
 
-	public void abreTelaCadastraTransacoes() {
-		telaCadastraTransacoes.setVisible(true);
-		
-	}
-
 }

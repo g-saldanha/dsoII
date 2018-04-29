@@ -63,16 +63,6 @@ public class TelaPrincipal extends JFrame {
 		});
 		mnInicio.add(jMenuItemUsuario);
 		
-		/*
-		JMenuItem jMenuItemTransacoes = new JMenuItem(Mensagens.REGISTRAR_TRANSACAO);
-		jMenuItemTransacoes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ControladorPrincipal.getInstance().abreTelaCadastraTransacoes();
-			}
-		});
-		mnInicio.add(jMenuItemTransacoes);
-		*/
-		
 		JMenu mnRelatrios = new JMenu(Mensagens.RELATORIOS);
 		jmenuPrincipal.add(mnRelatrios);
 		

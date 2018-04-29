@@ -30,8 +30,6 @@ public class TelaCadastraTransacoes extends JFrame {
     private JPanel contentPane;
     private JTextField jtfQtd;
     private JTable tableResumo;
-    private enum tiposTransacao{COMPRA, VENDA};
-    private enum acao{GOOGLE, FACEBOOK, YOUTUBE};
 
     /**
      * Create the frame.
@@ -53,7 +51,8 @@ public class TelaCadastraTransacoes extends JFrame {
 
         
         //Criei um TableModel e Apliquei a tabela 
-        tableResumo = new JTable(TableModelAcoes.getInstance());
+        tableResumo = new JTable();
+        tableResumo.setModel(TableModelAcoes.getInstance());
         tableResumo.setBounds(66, 54, 852, 203);
         contentPane.add(tableResumo);
 
@@ -69,8 +68,8 @@ public class TelaCadastraTransacoes extends JFrame {
 
         JComboBox jcbTipoDeAcao = new JComboBox();
         jcbTipoDeAcao.setBounds(76, 338, 262, 40);
-        jcbTipoDeAcao.addItem(tiposTransacao.COMPRA);
-        jcbTipoDeAcao.addItem(tiposTransacao.VENDA);
+        jcbTipoDeAcao.addItem(Mensagens.COMPRAR);
+        jcbTipoDeAcao.addItem(Mensagens.VENDER);
         contentPane.add(jcbTipoDeAcao);
 
         JLabel lblAo = new JLabel(Mensagens.ACAO + ":");
@@ -79,9 +78,9 @@ public class TelaCadastraTransacoes extends JFrame {
 
         JComboBox jcbAcao = new JComboBox();
         jcbAcao.setBounds(76, 418, 262, 40);
-        jcbAcao.addItem(acao.FACEBOOK);
-        jcbAcao.addItem(acao.GOOGLE);
-        jcbAcao.addItem(acao.YOUTUBE);
+        jcbAcao.addItem(Mensagens.FACEBOOK);
+        jcbAcao.addItem(Mensagens.GOOGLE);
+        jcbAcao.addItem(Mensagens.YOUTUBE);
         contentPane.add(jcbAcao);
 
         JLabel lblQuantidade = new JLabel(Mensagens.QTD + ":");
@@ -115,7 +114,7 @@ public class TelaCadastraTransacoes extends JFrame {
         lblVlUnitario.setBounds(76, 698, 262, 40);
         contentPane.add(lblVlUnitario);
 
-        JLabel lblVlUnitarioValue = new JLabel("R$ 123,00");
+        JLabel lblVlUnitarioValue = new JLabel("1,23");
         lblVlUnitarioValue.setBounds(76, 738, 262, 40);
         lblVlUnitarioValue.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(lblVlUnitarioValue);
@@ -124,13 +123,19 @@ public class TelaCadastraTransacoes extends JFrame {
         lblNewLabel.setBounds(76, 778, 262, 40);
         contentPane.add(lblNewLabel);
 
-        JLabel lblR = new JLabel("R$ 123,00");
+        JLabel lblR = new JLabel("123,00");
         lblR.setBounds(76, 818, 262, 40);
         lblR.setHorizontalAlignment(SwingConstants.RIGHT);
         contentPane.add(lblR);
 
         JButton jbtRegistrar = new JButton(Mensagens.REGISTRAR_TRANSACAO);
         jbtRegistrar.setBounds(86, 871, 165, 25);
+        jbtRegistrar.addActionListener(new ActionListener(){
+        	public void actionPerformed(ActionEvent arg0) {
+        		ControladorCarteira.getInstanceCarteira().cadAcao(jcbTipoDeAcao.getSelectedItem().toString(), jcbAcao.getSelectedItem().toString(), Integer.parseInt(jtfQtd.getText()), Double.parseDouble(jlbImposto.getText()), Double.parseDouble(lblJlbcorretagem.getText()));
+                
+        	}
+        });
         contentPane.add(jbtRegistrar);
 
         JButton jbtCancelar = new JButton(Mensagens.CANCELAR);
@@ -141,9 +146,7 @@ public class TelaCadastraTransacoes extends JFrame {
         });
         contentPane.add(jbtCancelar);
 
-        jbtRegistrar.addActionListener(x->{
-            JOptionPane.showMessageDialog(null, ControladorCarteira.cadAcao(jcbTipoDeAcao.getSelectedItem(), jcbAcao.getSelectedItem(), jtfQtd.getText(), jlbImposto.getText(), lblJlbcorretagem.getText(), lblVlUnitarioValue.getText()));
-        });
+        
 
 
     }

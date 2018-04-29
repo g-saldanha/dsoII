@@ -32,6 +32,7 @@ public class TelaCadastraUsuario extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(false);
 		setBounds(100, 100, 444, 192);
+		this.setTitle(Mensagens.CADASTRAR_USUARIO);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
