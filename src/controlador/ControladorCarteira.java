@@ -123,4 +123,12 @@ public class ControladorCarteira {
 		return false;
 	}
 
+	public double getValorEmCaixaCateira() {
+    	return carteiraEmUSo.getCaixa();
+	}
+
+
+	public void venderAcao(String qtd, String acao) {
+		
+    }
 }

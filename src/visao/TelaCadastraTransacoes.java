@@ -56,6 +56,20 @@ public class TelaCadastraTransacoes extends JFrame {
         tableResumo.setBounds(66, 54, 852, 203);
         contentPane.add(tableResumo);
 
+        JLabel lblValorEmCaixa = new JLabel(Mensagens.VALOR_EM_CAIXA);
+        lblValorEmCaixa.setBounds(76, 258, 262, 40);
+        lblValorEmCaixa.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        lblValorEmCaixa.setHorizontalAlignment(SwingConstants.CENTER);
+        contentPane.add(lblValorEmCaixa);
+
+        double valorEmCaixa = ControladorCarteira.getInstanceCarteira().getValorEmCaixaCateira();
+        JLabel fieldValorEmCaixa = new JLabel("" + valorEmCaixa);
+        fieldValorEmCaixa.setBounds(76, 258, 262, 40);
+        fieldValorEmCaixa.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        fieldValorEmCaixa.setHorizontalAlignment(SwingConstants.CENTER);
+        contentPane.add(fieldValorEmCaixa);
+
+
         JLabel lblRegistrarTransaes = new JLabel(Mensagens.REGISTRAR_TRANSACAO);
         lblRegistrarTransaes.setBounds(76, 258, 262, 40);
         lblRegistrarTransaes.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -132,8 +146,11 @@ public class TelaCadastraTransacoes extends JFrame {
         jbtRegistrar.setBounds(86, 871, 165, 25);
         jbtRegistrar.addActionListener(new ActionListener(){
         	public void actionPerformed(ActionEvent arg0) {
-        		ControladorCarteira.getInstanceCarteira().cadAcao(jcbTipoDeAcao.getSelectedItem().toString(), jcbAcao.getSelectedItem().toString(), Integer.parseInt(jtfQtd.getText()), Double.parseDouble(jlbImposto.getText()), Double.parseDouble(lblJlbcorretagem.getText()));
-                
+        	    if (jcbTipoDeAcao.getSelectedItem().equals(Mensagens.COMPRAR)) {
+                    ControladorCarteira.getInstanceCarteira().cadAcao(jcbTipoDeAcao.getSelectedItem().toString(), jcbAcao.getSelectedItem().toString(), Integer.parseInt(jtfQtd.getText()), Double.parseDouble(jlbImposto.getText()), Double.parseDouble(lblJlbcorretagem.getText()));
+                } else {
+        	        ControladorCarteira.getInstanceCarteira().venderAcao(jtfQtd.getText(), jcbAcao.getSelectedItem().toString());                }
+
         	}
         });
         contentPane.add(jbtRegistrar);

@@ -40,4 +40,5 @@ public class Mensagens {
     public static final String VALOR_UNITARIO = "Valor Unitário";	
     public static final String VENDER = "Vender";
     public static final String YOUTUBE = "Youtube";
+    public static final String VALOR_EM_CAIXA = "Valor em caixa";
 }
