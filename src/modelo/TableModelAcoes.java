@@ -102,6 +102,8 @@ this.fireTableRowsUpdated(linha, linha);
     public void setAcoes(List<Acao> acoesSet) {
         this.acoes = acoesSet;
     }
+    
+    //public void alterarAlgo() {}
 
 
 }
