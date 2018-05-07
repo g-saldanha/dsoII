@@ -3,16 +3,12 @@ package visao;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Recursos.Mensagens;
 import controlador.ControladorPrincipal;
 
-import javax.swing.JMenuBar;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -74,6 +70,7 @@ public class TelaPrincipal extends JFrame {
 		
 		JMenuItem mntmPorAo = new JMenuItem(Mensagens.POR_ACAO);
 		mnRelatrios.add(mntmPorAo);
+
 	}
 
 }

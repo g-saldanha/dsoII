@@ -17,7 +17,6 @@ public class Carteira {
         this.acoes = new ArrayList<>();
         this.saldo = 0;
         this.transacoes = null;
-        this.caixa = 0;
     }
 
     
@@ -56,14 +55,6 @@ public class Carteira {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
-    }
-
-    public double getCaixa() {
-        return caixa;
-    }
-
-    public void setCaixa(double caixa) {
-        this.caixa = caixa;
     }
 
     public void avaliarLucroOuPrejuizo(){

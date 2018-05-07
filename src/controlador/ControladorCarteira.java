@@ -35,12 +35,12 @@ public class ControladorCarteira {
         ControladorCarteira.listaDeCarteiras = listaDeCarteiras;
     }
 
-	public static void popularCamposDaTabela() {
-			TableModelAcoes.getInstance().setAcoes(carteiraEmUSo.getAcoes());
-			TableModelAcoes.getInstance().fireTableDataChanged();			
+	public static JTable popularCamposDaTabela() {
+//			TableModelAcoes.getInstance().setAcoes(carteiraEmUSo.getAcoes());
+//			TableModelAcoes.getInstance().fireTableDataChanged();
 		
 		
-		/*
+
 		JTable jtfCpf;
 		if (carteiraEmUSo == null || carteiraEmUSo.getAcoes().size() == 0 ){
 			jtfCpf =  new JTable() {
@@ -80,16 +80,27 @@ public class ControladorCarteira {
 			jtfCpf = new JTable(dados, colunas);
 			return jtfCpf;
 		}
-		*/
+
     }
 
-	public void cadAcao(String tipo, String nome, int qtd, double valorUnitario, double corretagem) {
+	public static void cadAcao(String tipo, String nome, Integer qtd, Double imposto, Double valorUnitario, Double corretagem) {
 //    	Se ao registrar a opção de COMPRA e apertar no Botão de Transação, essa condição vai cadastrar uma Ação de comprar na carteira do usuário atual.
 		if (tipo.equals(Mensagens.COMPRAR)) {
-			Acao acaoCompra = new Acao(nome, qtd, valorUnitario, corretagem, carteiraEmUSo.getCpf());
-			carteiraEmUSo.getAcoes().add(acaoCompra);
-			popularCamposDaTabela();
-			JOptionPane.showMessageDialog(null, Mensagens.ACAO_COMPRADA_COM_SUCESSO);
+//			Calcular o valor total quantidade + valor de unidad + imposto + corretagem
+			double valorTotalAcao = qtd * valorUnitario;
+			valorTotalAcao += corretagem;
+//			Validação se existe saldo na carteira para comprar a ação
+			if (carteiraEmUSo.getSaldo() >= valorTotalAcao){
+//				Comprar a ação
+				Acao acaoCompra = new Acao(nome, qtd, valorUnitario, corretagem, carteiraEmUSo.getCpf());
+				carteiraEmUSo.getAcoes().add(acaoCompra);
+				carteiraEmUSo.setSaldo(carteiraEmUSo.getSaldo()-valorTotalAcao);
+				popularCamposDaTabela();
+				JOptionPane.showMessageDialog(null, Mensagens.ACAO_COMPRADA_COM_SUCESSO);
+			} else {
+				JOptionPane.showMessageDialog(null, Mensagens.VOCE_NAO_TEM_SALDO);
+			}
+
 		}else {
 			JOptionPane.showMessageDialog(null, Mensagens.ACAO_NAO_COMPRADA);
 		}
@@ -123,12 +134,16 @@ public class ControladorCarteira {
 		return false;
 	}
 
-	public double getValorEmCaixaCateira() {
-    	return carteiraEmUSo.getCaixa();
+	public String getValorEmCaixaCateira() {
+    	return "R$ " + carteiraEmUSo.getSaldo();
 	}
 
 
-	public void venderAcao(String qtd, String acao) {
-		
+	public void venderAcao(String tipo, String qtd, String nome, Double imposto, Double corretagem, Double valorUnitario) {
+		if (tipo.equals(Mensagens.VENDER)) {
+
+		} else {
+			JOptionPane.showMessageDialog(null, Mensagens.ACAO_NAO_VENDIDA);
+		}
     }
 }
