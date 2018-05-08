@@ -21,6 +21,7 @@ public class TelaCadastraUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField jtfCpf;
+	private JTextField jtfSaldoInicial;
 
 
 	/**
@@ -31,7 +32,7 @@ public class TelaCadastraUsuario extends JFrame {
 		//this.setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(false);
-		setBounds(100, 100, 444, 192);
+		setBounds(100, 100, 508, 250);
 		this.setTitle(Mensagens.CADASTRAR_USUARIO);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,7 +55,7 @@ public class TelaCadastraUsuario extends JFrame {
 				ControladorPrincipal.getInstance().cadastraUsuario(jtfCpf.getText());
 			}
 		});
-		btnSalvar.setBounds(68, 87, 97, 25);
+		btnSalvar.setBounds(136, 165, 97, 25);
 		contentPane.add(btnSalvar);
 		
 		JButton btnCancelar = new JButton(Mensagens.CANCELAR);
@@ -64,7 +65,16 @@ public class TelaCadastraUsuario extends JFrame {
 				jtfCpf.setText("");
 			}
 		});
-		btnCancelar.setBounds(245, 87, 97, 25);
+		btnCancelar.setBounds(245, 165, 97, 25);
 		contentPane.add(btnCancelar);
+		
+		JLabel lblSaldoInicial = new JLabel("Saldo Inicial:");
+		lblSaldoInicial.setBounds(34, 88, 89, 16);
+		contentPane.add(lblSaldoInicial);
+		
+		jtfSaldoInicial = new JTextField();
+		jtfSaldoInicial.setBounds(147, 85, 195, 22);
+		contentPane.add(jtfSaldoInicial);
+		jtfSaldoInicial.setColumns(10);
 	}
 }

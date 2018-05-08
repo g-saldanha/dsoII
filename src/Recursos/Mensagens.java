@@ -7,6 +7,7 @@ public class Mensagens {
     public static final String ACAO = "Ação";
     public static final String ACAO_COMPRADA_COM_SUCESSO = "Ação Comprada com Sucesso";
     public static final String ACAO_NAO_COMPRADA = "Não foi possível concluir a transação";
+    public static final String ACAO_NAO_VENDIDA = "Não foi possível vender sua ação";
     public static final String CADASTRAR_USUARIO = "Cadastrar Usuário";
     public static final String CANCELAR = "Cancelar";
     public static final String CARTEIRA_DE_ACOES = "Carteira de Ações";
@@ -30,7 +31,9 @@ public class Mensagens {
     public static final String RESUMO_DA_CARTEIRA = "Resumo da Carteira";
     public static final String SALVAR = "Salvar";
     public static final String SEM_TRANSACOES = "Nenhuma transação registrada para este usuário!";
+    public static final String SUBTITULO_TRAB = "Sistema de Gerenciamento de Ativos Financeiros";
     public static final String TIPO = "Tipo:";
+    public static final String TITULO_TRAB = "Trabalho de DSOII";
     public static final String TOTAL = "Total";
     public static final String TRANSACOES = "Transações";
     public static final String USUARIO_CADASTRADO = "Usuário Cadastrado com sucesso!";
@@ -41,8 +44,6 @@ public class Mensagens {
     public static final String VENDER = "Vender";
     public static final String YOUTUBE = "Youtube";
     public static final String VALOR_EM_CAIXA = "Valor em caixa";
-    public static final String VOCE_NAO_TEM_SALDO = "VOCÊ NÃO POSSUI SALDO NA CARTEIRA PARA COMPRAR ESTA AÇÂO(ÕES)";
-    public static final String ACAO_NAO_VENDIDA = "Não foi possível vender sua ação";
-    public static final String TITULO_TRAB = "Trabalho de DSOII";
-    public static final String SUBTITULO_TRAB = "Sistema de Gerenciamento de Ativos Financeiros";
+    public static final String VOCE_NAO_TEM_SALDO = "VOCÊ NÃO POSSUI SALDO NA CARTEIRA PARA COMPRAR ESTA AÇÂO(ÕES)";    
+	public static final String VOLTAR = "Voltar";
 }
