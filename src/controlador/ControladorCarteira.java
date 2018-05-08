@@ -97,6 +97,7 @@ public class ControladorCarteira {
 				carteiraEmUSo.getAcoes().add(acaoCompra);
 				carteiraEmUSo.setSaldo(carteiraEmUSo.getSaldo()-valorTotalAcao);
 				popularCamposDaTabela();
+				ControladorRelatorios.getInstanceOfRelatorios().cadastraRegistro(tipo, nome, qtd, valorUnitario);
 				return Mensagens.ACAO_COMPRADA_COM_SUCESSO;
 			} else {
 				return Mensagens.VOCE_NAO_TEM_SALDO;

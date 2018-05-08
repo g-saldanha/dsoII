@@ -4,6 +4,7 @@ import Recursos.Mensagens;
 import controlador.ControladorAcoes;
 import controlador.ControladorCarteira;
 import controlador.ControladorPrincipal;
+import controlador.ControladorRelatorios;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
