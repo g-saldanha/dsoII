@@ -9,7 +9,9 @@ public class Main {
         Carteira gabriel = new Carteira("00955233917");
         gabriel.setSaldo(2000.0);
         gabriel.setNumeroDaCarteira("0001");
-        gabriel.getAcoes().add(new Acao("Apple", 1, 38, 1, "00955233917"));
+        Acao acao = new Acao("Apple", 1, 38, 1);
+        acao.setCpf("00955233917");
+        gabriel.getAcoes().add(acao);
         ControladorCarteira.getInstanceCarteira().getListaDeCarteiras().add(gabriel);
         ControladorPrincipal.getInstance().abreTelaPrincipal();
     }

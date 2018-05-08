@@ -30,7 +30,7 @@ public class TelaPrincipal extends JFrame {
 		//Instanciando um painel e adicionando ele a tela
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(new BorderLayout(2, 2));
 		setContentPane(contentPane);
 		this.setVisible(false);
 		
@@ -70,6 +70,16 @@ public class TelaPrincipal extends JFrame {
 		
 		JMenuItem mntmPorAo = new JMenuItem(Mensagens.POR_ACAO);
 		mnRelatrios.add(mntmPorAo);
+
+		JLabel titulo = new JLabel(Mensagens.TITULO_TRAB);
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(titulo);
+
+		JLabel subTitulo = new JLabel(Mensagens.SUBTITULO_TRAB);
+		subTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(subTitulo);
+
+
 
 	}
 

@@ -1,10 +1,13 @@
 package controlador;
 
-import javax.swing.JOptionPane;
+import javax.naming.ldap.Control;
+import javax.swing.*;
 
 import com.sun.corba.se.spi.orbutil.fsm.State;
 
 import Recursos.Mensagens;
+import modelo.Carteira;
+import sun.invoke.empty.Empty;
 import visao.*;
 
 public class ControladorPrincipal {
@@ -33,7 +36,15 @@ public class ControladorPrincipal {
 		}
 		
 	}
-	
+
+	public static Double calculaValorTotal(JTextField jtfQtd, JLabel lblVlUnitarioValue) {
+		if (jtfQtd.getText().isEmpty()){
+			return  Double.parseDouble(lblVlUnitarioValue.getText());
+		} else {
+			return Double.parseDouble(lblVlUnitarioValue.getText()) * Double.parseDouble(jtfQtd.getText());
+		}
+	}
+
 	//Centraliza as Telas
 	private void centralizaTelas() {
 		telaPrincipal.setLocationRelativeTo(null);
@@ -61,6 +72,7 @@ public class ControladorPrincipal {
 				this.telaCadastraTransacoes = new TelaCadastraTransacoes();
 				telaCadastraTransacoes.setLocationRelativeTo(null);
 				telaCadastraTransacoes.setVisible(true);
+
 			}else {
 				JOptionPane.showMessageDialog(null, Mensagens.USUARIO_NAO_ENCONTRADO);
 			}				

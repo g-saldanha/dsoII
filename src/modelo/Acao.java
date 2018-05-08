@@ -9,11 +9,10 @@ public class Acao {
     private String cpf;
     private Double total;
 
-    public Acao(String nome, int qtd, double valorUnitario, double corretagem, String cpf) {
+    public Acao(String nome, int qtd, double valorUnitario, double corretagem) {
         this.qtd = qtd;
         this.valorUnitario = valorUnitario;
         this.corretagem = corretagem;
-        this.cpf = cpf;
         this.nome = nome;
     }
 

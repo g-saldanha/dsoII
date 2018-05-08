@@ -83,7 +83,7 @@ public class ControladorCarteira {
 
     }
 
-	public static void cadAcao(String tipo, String nome, Integer qtd, Double imposto, Double valorUnitario, Double corretagem) {
+	public static String  cadAcao(String tipo, String nome, Integer qtd, Double imposto, Double valorUnitario, Double corretagem) {
 //    	Se ao registrar a opção de COMPRA e apertar no Botão de Transação, essa condição vai cadastrar uma Ação de comprar na carteira do usuário atual.
 		if (tipo.equals(Mensagens.COMPRAR)) {
 //			Calcular o valor total quantidade + valor de unidad + imposto + corretagem
@@ -92,17 +92,18 @@ public class ControladorCarteira {
 //			Validação se existe saldo na carteira para comprar a ação
 			if (carteiraEmUSo.getSaldo() >= valorTotalAcao){
 //				Comprar a ação
-				Acao acaoCompra = new Acao(nome, qtd, valorUnitario, corretagem, carteiraEmUSo.getCpf());
+				Acao acaoCompra = new Acao(nome, qtd, valorUnitario, corretagem);
+				acaoCompra.setCpf(carteiraEmUSo.getCpf());
 				carteiraEmUSo.getAcoes().add(acaoCompra);
 				carteiraEmUSo.setSaldo(carteiraEmUSo.getSaldo()-valorTotalAcao);
 				popularCamposDaTabela();
-				JOptionPane.showMessageDialog(null, Mensagens.ACAO_COMPRADA_COM_SUCESSO);
+				return Mensagens.ACAO_COMPRADA_COM_SUCESSO;
 			} else {
-				JOptionPane.showMessageDialog(null, Mensagens.VOCE_NAO_TEM_SALDO);
+				return Mensagens.VOCE_NAO_TEM_SALDO;
 			}
 
 		}else {
-			JOptionPane.showMessageDialog(null, Mensagens.ACAO_NAO_COMPRADA);
+			return Mensagens.ACAO_NAO_COMPRADA;
 		}
     }
 
@@ -146,4 +147,12 @@ public class ControladorCarteira {
 			JOptionPane.showMessageDialog(null, Mensagens.ACAO_NAO_VENDIDA);
 		}
     }
+
+	public static Carteira getCarteiraEmUSo() {
+		return carteiraEmUSo;
+	}
+
+	public static void setCarteiraEmUSo(Carteira carteiraEmUSo) {
+		ControladorCarteira.carteiraEmUSo = carteiraEmUSo;
+	}
 }

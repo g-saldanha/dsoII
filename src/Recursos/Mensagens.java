@@ -41,6 +41,8 @@ public class Mensagens {
     public static final String VENDER = "Vender";
     public static final String YOUTUBE = "Youtube";
     public static final String VALOR_EM_CAIXA = "Valor em caixa";
-    public static final Object VOCE_NAO_TEM_SALDO = "VOCÊ NÃO POSSUI SALDO NA CARTEIRA PARA COMPRAR ESTA AÇÂO(ÕES)";
-    public static final Object ACAO_NAO_VENDIDA = "Não foi possível vender sua ação";
+    public static final String VOCE_NAO_TEM_SALDO = "VOCÊ NÃO POSSUI SALDO NA CARTEIRA PARA COMPRAR ESTA AÇÂO(ÕES)";
+    public static final String ACAO_NAO_VENDIDA = "Não foi possível vender sua ação";
+    public static final String TITULO_TRAB = "Trabalho de DSOII";
+    public static final String SUBTITULO_TRAB = "Sistema de Gerenciamento de Ativos Financeiros";
 }
