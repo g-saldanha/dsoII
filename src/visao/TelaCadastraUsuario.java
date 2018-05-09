@@ -52,7 +52,7 @@ public class TelaCadastraUsuario extends JFrame {
 		JButton btnSalvar = new JButton(Mensagens.SALVAR);
 		btnSalvar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ControladorPrincipal.getInstance().cadastraUsuario(jtfCpf.getText());
+				ControladorPrincipal.getInstance().cadastraUsuario(jtfCpf.getText(), jtfSaldoInicial.getText());
 			}
 		});
 		btnSalvar.setBounds(136, 165, 97, 25);

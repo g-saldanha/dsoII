@@ -30,106 +30,107 @@ public class TelaCadastraTransacoes extends JFrame {
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
-        contentPane.setLayout(new GridLayout(30,0));
+        contentPane.setLayout(null);
 
         JLabel lblResumoDaCarteira = new JLabel(Mensagens.RESUMO_DA_CARTEIRA);
-        lblResumoDaCarteira.setBounds(369, 44, 128, 16);
+        lblResumoDaCarteira.setBounds(5, 16, 864, 24);
         lblResumoDaCarteira.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblResumoDaCarteira);
 
         JLabel saldoLabel = new JLabel(Mensagens.VALOR_EM_CAIXA);
-        saldoLabel.setBounds(369,44,128,16);
+        saldoLabel.setBounds(5, 40, 864, 24);
         saldoLabel.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(saldoLabel);
 
         JLabel saldoValue = new JLabel(ControladorCarteira.getInstanceCarteira().getValorEmCaixaCateira());
-        saldoValue.setBounds(369,44,128,16);
+        saldoValue.setBounds(5, 64, 864, 24);
         saldoValue.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(saldoValue);
 
         jtpCarteira = new JTable();
         popularCampos();
         JScrollPane jtpCarteiraPane = new JScrollPane(this.jtpCarteira);
+        jtpCarteiraPane.setBounds(5, 88, 864, 139);
         jtpCarteira.setPreferredScrollableViewportSize(new Dimension(500,300));
         jtpCarteira.setFillsViewportHeight(true);
         jtpCarteira.setPreferredSize(new Dimension(500,300));
         contentPane.add(jtpCarteiraPane);
 
         JLabel lblRegistrarTransaes = new JLabel(Mensagens.REGISTRAR_TRANSACAO);
+        lblRegistrarTransaes.setBounds(5, 240, 864, 24);
         lblRegistrarTransaes.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        lblRegistrarTransaes.setBounds(369, 293, 144, 32);
         lblRegistrarTransaes.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(lblRegistrarTransaes);
 
         JLabel lblTipo = new JLabel("Tipo:");
-        lblTipo.setBounds(338, 341, 56, 16);
+        lblTipo.setBounds(5, 318, 864, 24);
         contentPane.add(lblTipo);
 
         JComboBox jcbTipoDeAcao = new JComboBox();
-        jcbTipoDeAcao.setBounds(432, 338, 116, 22);
+        jcbTipoDeAcao.setBounds(5, 304, 864, 24);
         jcbTipoDeAcao.addItem(Mensagens.COMPRAR);
         jcbTipoDeAcao.addItem(Mensagens.VENDER);
         contentPane.add(jcbTipoDeAcao);
 
         JLabel lblAo = new JLabel(Mensagens.ACAO + ":");
-        lblAo.setBounds(338, 376, 56, 16);
+        lblAo.setBounds(5, 267, 864, 24);
         contentPane.add(lblAo);
 
         JComboBox jcbAcao = ControladorAcoes.getInstanceAcoes().getComboAcoes();
         contentPane.add(jcbAcao);
 
         JLabel lblQuantidade = new JLabel(Mensagens.QTD+": ");
-        lblQuantidade.setBounds(338, 413, 82, 16);
+        lblQuantidade.setBounds(5, 378, 864, 24);
         contentPane.add(lblQuantidade);
 
         jtfQtd = new JTextField();
-        jtfQtd.setBounds(432, 410, 116, 22);
+        jtfQtd.setBounds(5, 400, 864, 24);
         contentPane.add(jtfQtd);
         jtfQtd.setColumns(10);
 
         JLabel lblCorretagem = new JLabel("Corretagem:");
-        lblCorretagem.setBounds(338, 448, 82, 16);
+        lblCorretagem.setBounds(5, 430, 864, 24);
         contentPane.add(lblCorretagem);
 
         JLabel lblJlbcorretagem = new JLabel("0");
+        lblJlbcorretagem.setBounds(5, 304, 864, 24);
         lblJlbcorretagem.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblJlbcorretagem.setBounds(432, 448, 116, 16);
         contentPane.add(lblJlbcorretagem);
 
         JLabel lblImpostos = new JLabel("Impostos:");
-        lblImpostos.setBounds(338, 477, 72, 16);
+        lblImpostos.setBounds(5, 459, 864, 24);
         contentPane.add(lblImpostos);
 
         JLabel jlbImposto = new JLabel("10");
+        jlbImposto.setBounds(5, 459, 864, 24);
         jlbImposto.setHorizontalAlignment(SwingConstants.RIGHT);
-        jlbImposto.setBounds(432, 477, 116, 16);
         contentPane.add(jlbImposto);
 
         JLabel lblVlUnitario = new JLabel(Mensagens.VALOR_UNITARIO);
-        lblVlUnitario.setBounds(338, 515, 56, 16);
+        lblVlUnitario.setBounds(5, 497, 864, 24);
         contentPane.add(lblVlUnitario);
 
         JLabel lblVlUnitarioValue = new JLabel(ControladorAcoes.getInstanceAcoes().getValorUnitario(jcbAcao.getSelectedItem()));
+        lblVlUnitarioValue.setBounds(5, 497, 864, 24);
         lblVlUnitarioValue.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblVlUnitarioValue.setBounds(442, 515, 106, 16);
         contentPane.add(lblVlUnitarioValue);
 
         JLabel lblNewLabel = new JLabel("Total:");
-        lblNewLabel.setBounds(338, 515, 56, 16);
+        lblNewLabel.setBounds(5, 534, 864, 24);
         contentPane.add(lblNewLabel);
 
         Double calcVT = ControladorPrincipal.calculaValorTotal(jtfQtd, lblVlUnitarioValue);
         JLabel lblR = new JLabel("" + calcVT);
+        lblR.setBounds(5, 534, 864, 24);
         lblR.setHorizontalAlignment(SwingConstants.RIGHT);
-        lblR.setBounds(442, 515, 106, 16);
         contentPane.add(lblR);
 
         JButton jbtRegistrar = new JButton(Mensagens.REGISTRAR_TRANSACAO);
-        jbtRegistrar.setBounds(238, 555, 156, 25);
+        jbtRegistrar.setBounds(5, 571, 864, 24);
         contentPane.add(jbtRegistrar);
 
         JButton jbtCancelar = new JButton(Mensagens.CANCELAR);
-        jbtCancelar.setBounds(502, 555, 97, 25);
+        jbtCancelar.setBounds(5, 600, 864, 24);
         contentPane.add(jbtCancelar);
 
         jbtRegistrar.addActionListener(x->{

@@ -78,8 +78,8 @@ public class ControladorPrincipal {
 			}				
 	}
 
-	public void cadastraUsuario(String text) {
-		if(ControladorCarteira.getInstanceCarteira().cadastrarCarteira(text)) {
+	public void cadastraUsuario(String text, String saldo) {
+		if(ControladorCarteira.getInstanceCarteira().cadastrarCarteira(text, saldo)) {
 			JOptionPane.showMessageDialog(null, Mensagens.USUARIO_CADASTRADO); 
 			telaCadastraUsuario.setVisible(false);
 		}else {

@@ -108,9 +108,9 @@ public class ControladorCarteira {
 		}
     }
 
-	public boolean cadastrarCarteira(String cpf){
+	public boolean cadastrarCarteira(String cpf, String saldo){
     	if(!existeUsuario(cpf)) {
-    		getListaDeCarteiras().add(new Carteira(cpf));
+    		getListaDeCarteiras().add(new Carteira(cpf, Double.parseDouble(saldo)));
     		return true;
     	}
 		return false;

@@ -11,11 +11,11 @@ public class Carteira {
     private double saldo;
     private Transacao[] transacoes;
 
-    public Carteira(String cpf) {
+    public Carteira(String cpf, Double saldo) {
         this.cpf = cpf;
         this.numeroDaCarteira = Integer.toString(this.hashCode());
         this.acoes = new ArrayList<>();
-        this.saldo = 0;
+        this.saldo = saldo;
         this.transacoes = null;
     }
 

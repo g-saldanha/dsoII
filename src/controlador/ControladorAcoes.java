@@ -38,7 +38,7 @@ public class ControladorAcoes {
 
     public JComboBox getComboAcoes(){
         JComboBox jcbAcao = new JComboBox();
-        jcbAcao.setBounds(432, 373, 116, 22);
+        jcbAcao.setBounds(5, 352, 864, 24);
         for (Acao acao : listaDeAcoes
              ) {
             jcbAcao.addItem(acao.getNome());
