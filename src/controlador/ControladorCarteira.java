@@ -8,6 +8,8 @@ import modelo.Transacao;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -35,12 +37,13 @@ public class ControladorCarteira {
         ControladorCarteira.listaDeCarteiras = listaDeCarteiras;
     }
 
-	public static JTable popularCamposDaTabela() {
-//			TableModelAcoes.getInstance().setAcoes(carteiraEmUSo.getAcoes());
-//			TableModelAcoes.getInstance().fireTableDataChanged();
+	public static void popularCamposDaTabela() {
+			TableModelAcoes.getInstance().setAcoes(carteiraEmUSo.getAcoes());
+			TableModelAcoes.getInstance().fireTableDataChanged();
+			 
+	}
 		
-		
-
+/*
 		JTable jtfCpf;
 		if (carteiraEmUSo == null || carteiraEmUSo.getAcoes().size() == 0 ){
 			jtfCpf =  new JTable() {
@@ -60,7 +63,7 @@ public class ControladorCarteira {
 					}
 				}
 			};
-
+			
 			return jtfCpf;
 		} else {
 			String[] colunas = {
@@ -82,7 +85,7 @@ public class ControladorCarteira {
 		}
 
     }
-
+*/
 	public static String  cadAcao(String tipo, String nome, Integer qtd, Double imposto, Double valorUnitario, Double corretagem) {
 //    	Se ao registrar a opção de COMPRA e apertar no Botão de Transação, essa condição vai cadastrar uma Ação de comprar na carteira do usuário atual.
 		if (tipo.equals(Mensagens.COMPRAR)) {

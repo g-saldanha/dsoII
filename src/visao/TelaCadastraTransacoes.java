@@ -5,9 +5,12 @@ import controlador.ControladorAcoes;
 import controlador.ControladorCarteira;
 import controlador.ControladorPrincipal;
 import controlador.ControladorRelatorios;
+import modelo.TableModelAcoes;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.TableModel;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -49,6 +52,7 @@ public class TelaCadastraTransacoes extends JFrame {
 
         jtpCarteira = new JTable();
         popularCampos();
+        jtpCarteira.setModel(TableModelAcoes.getInstance());
         JScrollPane jtpCarteiraPane = new JScrollPane(this.jtpCarteira);
         jtpCarteiraPane.setBounds(5, 88, 864, 139);
         jtpCarteira.setPreferredScrollableViewportSize(new Dimension(500,300));
@@ -137,6 +141,7 @@ public class TelaCadastraTransacoes extends JFrame {
             if (jcbTipoDeAcao.getSelectedItem().toString().equals(Mensagens.COMPRAR)) {
                 String mensagem = ControladorCarteira.cadAcao(jcbTipoDeAcao.getSelectedItem().toString(), jcbAcao.getSelectedItem().toString(), Integer.parseInt(jtfQtd.getText()), Double.parseDouble(jlbImposto.getText()), Double.parseDouble(lblVlUnitarioValue.getText()), Double.parseDouble(lblJlbcorretagem.getText()));
                 popularCampos();
+                saldoValue.setText(ControladorCarteira.getInstanceCarteira().getValorEmCaixaCateira());
                 JOptionPane.showMessageDialog(null, "" + mensagem);
             } else {
                 JOptionPane.showMessageDialog(null, "algo");
@@ -159,7 +164,8 @@ public class TelaCadastraTransacoes extends JFrame {
     }
 
     private void popularCampos() {
-        this.jtpCarteira = ControladorCarteira.popularCamposDaTabela();
+    	ControladorCarteira.popularCamposDaTabela();
+        //this.jtpCarteira = ControladorCarteira.popularCamposDaTabela();
     }
 
 

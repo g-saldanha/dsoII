@@ -6,7 +6,7 @@ import modelo.Carteira;
 
 public class Main {
     public static void main(String[] args) {
-        Carteira gabriel = new Carteira("00955233917", 200.00);
+        Carteira gabriel = new Carteira("00955233917", 0.);
         gabriel.setSaldo(2000.0);
         gabriel.setNumeroDaCarteira("0001");
         Acao acao = new Acao("Apple", 1, 38, 1);
