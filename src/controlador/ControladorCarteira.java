@@ -97,7 +97,8 @@ public class ControladorCarteira {
 //				Comprar a ação
 				Acao acaoCompra = new Acao(nome, qtd, valorUnitario, corretagem);
 				acaoCompra.setCpf(carteiraEmUSo.getCpf());
-				carteiraEmUSo.getAcoes().add(acaoCompra);
+				acrescentaAcao(acaoCompra);
+				//carteiraEmUSo.getAcoes().add(acaoCompra);
 				carteiraEmUSo.setSaldo(carteiraEmUSo.getSaldo()-valorTotalAcao);
 				popularCamposDaTabela();
 				ControladorRelatorios.getInstanceOfRelatorios().cadastraRegistro(tipo, nome, qtd, valorUnitario);
@@ -110,6 +111,21 @@ public class ControladorCarteira {
 			return Mensagens.ACAO_NAO_COMPRADA;
 		}
     }
+
+	public static void acrescentaAcao(Acao compra) {
+		boolean cadastrado = false;
+			for(Acao acao : carteiraEmUSo.getAcoes()) {
+				if(acao.getNome().equals(compra.getNome())) {
+					acao.setQtd(acao.getQtd() + compra.getQtd());
+					cadastrado = true;
+				}
+			}				
+			if (cadastrado == false) {
+				carteiraEmUSo.getAcoes().add(compra);
+				
+			}
+							
+	}
 
 	public boolean cadastrarCarteira(String cpf, String saldo){
     	if(!existeUsuario(cpf)) {
