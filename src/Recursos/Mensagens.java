@@ -46,4 +46,10 @@ public class Mensagens {
     public static final String VALOR_EM_CAIXA = "Valor em caixa";
     public static final String VOCE_NAO_TEM_SALDO = "VOCÊ NÃO POSSUI SALDO NA CARTEIRA PARA COMPRAR ESTA AÇÂO(ÕES)";    
 	public static final String VOLTAR = "Voltar";
+    public static final String SITUACAO = "Situacao";
+    public static final String VALOR_ATUAL = "Valor Atual";
+    public static final String VALOR_COMPRADO = "Valor Comprado";
+    public static final String TIPO_DE_OPERACAO = "Tipo de Operacao";
+    public static final String PREJUIZO = "Prejuizo" ;
+    public static final String LUCRO = "LUCRO";
 }

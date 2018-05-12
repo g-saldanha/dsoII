@@ -1,10 +1,7 @@
 package controlador;
 
 import Recursos.Mensagens;
-import modelo.Acao;
-import modelo.Carteira;
-import modelo.TableModelAcoes;
-import modelo.Transacao;
+import modelo.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -41,6 +38,11 @@ public class ControladorCarteira {
 			TableModelAcoes.getInstance().setAcoes(carteiraEmUSo.getAcoes());
 			TableModelAcoes.getInstance().fireTableDataChanged();
 			 
+	}
+
+	public static void popularCamposDaTabelaRelatorios() {
+		TableModelRelatorios.getInstance().setAcoes(carteiraEmUSo.getRegistros());
+		TableModelRelatorios.getInstance().fireTableDataChanged();
 	}
 		
 /*
@@ -101,7 +103,7 @@ public class ControladorCarteira {
 				//carteiraEmUSo.getAcoes().add(acaoCompra);
 				carteiraEmUSo.setSaldo(carteiraEmUSo.getSaldo()-valorTotalAcao);
 				popularCamposDaTabela();
-				ControladorRelatorios.getInstanceOfRelatorios().cadastraRegistro(tipo, nome, qtd, valorUnitario);
+				carteiraEmUSo.getRegistros().add(new Registro(nome, qtd, qtd * valorUnitario, tipo));
 				return Mensagens.ACAO_COMPRADA_COM_SUCESSO;
 			} else {
 				return Mensagens.VOCE_NAO_TEM_SALDO;
@@ -126,6 +128,8 @@ public class ControladorCarteira {
 			}
 							
 	}
+
+
 
 	public boolean cadastrarCarteira(String cpf, String saldo){
     	if(!existeUsuario(cpf)) {

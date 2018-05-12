@@ -1,15 +1,12 @@
 package visao;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
 import Recursos.Mensagens;
-import javax.swing.JTable;
-import javax.swing.JButton;
+import controlador.ControladorCarteira;
+import modelo.TableModelRelatorios;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public class TelaRelatorios extends JFrame {
 
@@ -45,11 +42,21 @@ public class TelaRelatorios extends JFrame {
 		contentPane.setLayout(null);
 		
 		jtableRelatorios = new JTable();
-		jtableRelatorios.setBounds(106, 223, 561, -160);
-		contentPane.add(jtableRelatorios);
+		this.popularCampos();
+		jtableRelatorios.setModel(TableModelRelatorios.getInstance());
+		JScrollPane jtableRelatoriosPane = new JScrollPane(this.jtableRelatorios);
+		jtableRelatoriosPane.setBounds(5, 88, 864, 139);
+		jtableRelatorios.setPreferredScrollableViewportSize(new Dimension(500,300));
+		jtableRelatorios.setFillsViewportHeight(true);
+		jtableRelatorios.setPreferredSize(new Dimension(500,300));
+		contentPane.add(jtableRelatoriosPane);
 		
 		JButton jbtVoltar = new JButton(Mensagens.VOLTAR);
 		jbtVoltar.setBounds(334, 368, 97, 25);
 		contentPane.add(jbtVoltar);
+	}
+
+	private void popularCampos() {
+		ControladorCarteira.popularCamposDaTabelaRelatorios();
 	}
 }

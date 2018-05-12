@@ -1,5 +1,6 @@
 package controlador;
 
+import Recursos.Mensagens;
 import modelo.Registro;
 
 import java.util.ArrayList;
@@ -23,5 +24,32 @@ public class ControladorRelatorios {
 
     public void cadastraRegistro(String tipo, String nome, Integer qtd, Double valorUnitario) {
         listaDeRegistros.add(new Registro(nome, qtd, valorUnitario, tipo));
+    }
+
+    public String getSituacao(double valorNaCompra, double valorAtual, String tipoOperacao) {
+        if (tipoOperacao.equals(Mensagens.COMPRAR)) {
+            return this.getSituacaoCompra(valorAtual, valorNaCompra);
+        } else if (tipoOperacao.equals(Mensagens.VENDER)){
+            return this.getSituacaoVenda(valorAtual,valorNaCompra);
+        }
+        return null;
+    }
+
+    private String getSituacaoVenda(double valorAtual, double valorNaCompra) {
+        if (valorNaCompra < valorAtual){
+            return Mensagens.PREJUIZO;
+        } else if (valorNaCompra > valorAtual){
+            return Mensagens.LUCRO;
+        }
+        return null;
+    }
+
+    private String getSituacaoCompra(double valorAtual, double valorNaCompra) {
+        if (valorNaCompra < valorAtual){
+            return Mensagens.LUCRO;
+        } else if (valorNaCompra > valorAtual){
+            return Mensagens.PREJUIZO;
+        }
+        return null;
     }
 }

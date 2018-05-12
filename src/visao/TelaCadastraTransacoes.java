@@ -161,6 +161,12 @@ public class TelaCadastraTransacoes extends JFrame {
                 lblR.setText("" + ControladorPrincipal.calculaValorTotal(jtfQtd, lblVlUnitarioValue));
             }
         });
+
+        jbtCancelar.addActionListener(
+                x -> {
+                    this.setVisible(false);
+                }
+        );
     }
 
     private void popularCampos() {

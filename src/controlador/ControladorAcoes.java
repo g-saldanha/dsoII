@@ -58,4 +58,14 @@ public class ControladorAcoes {
         }
         return "Nenhuma ação foi selecionada";
     }
+
+    public double getValorAcao(String nomeAcao, int qtd) {
+        for (Acao acao : listaDeAcoes
+             ) {
+            if (acao.getNome().equals(nomeAcao)){
+                return acao.getValorUnitario() * qtd;
+            }
+        }
+        return 0;
+    }
 }

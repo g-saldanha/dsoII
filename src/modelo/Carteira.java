@@ -1,7 +1,9 @@
 package modelo;
 
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Carteira {
     private double caixa;
@@ -10,11 +12,13 @@ public class Carteira {
     private ArrayList<Acao> acoes;
     private double saldo;
     private Transacao[] transacoes;
+    private ArrayList<Registro> registros;
 
     public Carteira(String cpf, Double saldo) {
         this.cpf = cpf;
         this.numeroDaCarteira = Integer.toString(this.hashCode());
         this.acoes = new ArrayList<>();
+        this.registros = new ArrayList<>();
         this.saldo = saldo;
         this.transacoes = null;
     }
@@ -64,4 +68,11 @@ public class Carteira {
     private void avaliarAcao(Acao[] atuais) {
     }
 
+    public List<Registro> getRegistros() {
+        return registros;
+    }
+
+    public void setRegistros(ArrayList<Registro> registros) {
+        this.registros = registros;
+    }
 }

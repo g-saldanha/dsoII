@@ -45,4 +45,12 @@ public class Registro {
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
+
+    public String getTipoDeOperacao() {
+        return tipoDeOperacao;
+    }
+
+    public void setTipoDeOperacao(String tipoDeOperacao) {
+        this.tipoDeOperacao = tipoDeOperacao;
+    }
 }
