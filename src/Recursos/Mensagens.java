@@ -52,4 +52,5 @@ public class Mensagens {
     public static final String TIPO_DE_OPERACAO = "Tipo de Operacao";
     public static final String PREJUIZO = "Prejuizo" ;
     public static final String LUCRO = "LUCRO";
+    public static final String EMPATE = "EMPATE";
 }

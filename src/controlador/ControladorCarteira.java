@@ -41,6 +41,7 @@ public class ControladorCarteira {
 	}
 
 	public static void popularCamposDaTabelaRelatorios() {
+    	if (carteiraEmUSo != null)
 		TableModelRelatorios.getInstance().setAcoes(carteiraEmUSo.getRegistros());
 		TableModelRelatorios.getInstance().fireTableDataChanged();
 	}

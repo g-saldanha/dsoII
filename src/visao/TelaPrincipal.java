@@ -7,7 +7,9 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Recursos.Mensagens;
+import controlador.ControladorCarteira;
 import controlador.ControladorPrincipal;
+import controlador.ControladorRelatorios;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -65,11 +67,11 @@ public class TelaPrincipal extends JFrame {
 		JMenuItem jMenuRelGeral = new JMenuItem(Mensagens.GERAL);
 		mnRelatrios.add(jMenuRelGeral);
 		
-		JMenuItem jMenuRelPeriodo = new JMenuItem(Mensagens.POR_PERIODO);
-		mnRelatrios.add(jMenuRelPeriodo);
-		
-		JMenuItem mntmPorAo = new JMenuItem(Mensagens.POR_ACAO);
-		mnRelatrios.add(mntmPorAo);
+//		JMenuItem jMenuRelPeriodo = new JMenuItem(Mensagens.POR_PERIODO);
+//		mnRelatrios.add(jMenuRelPeriodo);
+//
+//		JMenuItem mntmPorAo = new JMenuItem(Mensagens.POR_ACAO);
+//		mnRelatrios.add(mntmPorAo);
 
 		JLabel titulo = new JLabel(Mensagens.TITULO_TRAB);
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -79,7 +81,12 @@ public class TelaPrincipal extends JFrame {
 		subTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(subTitulo);
 
-
+		jMenuRelGeral.addActionListener(
+				x -> {
+					ControladorCarteira.getInstanceCarteira().popularCamposDaTabelaRelatorios();
+					ControladorRelatorios.getInstanceOfRelatorios().abreTelaDeRelatorio(this);
+				}
+		);
 
 	}
 

@@ -67,43 +67,42 @@ public class TableModelRelatorios extends AbstractTableModel {
         return null;
     }
 
-//    @Override
-//    public void setValueAt(Object valor, int linha, int coluna) {
-//        switch (coluna) {
-//            case 0:
-//                acoes.get(linha).setNome((String) valor);
-//                break;
-//            case 1:
-//                acoes.get(linha).setQtd((Integer) valor);
-//                break;
-//            case 2:
-//                try {
-//                    acoes.get(linha).setValorUnitario((Double) valor);
-//                } catch (NumberFormatException nfe) {
-//                    acoes.get(linha).setValorUnitario(0);
-//                }
-//                break;
-//            case 3:
-//                acoes.get(linha).setTotal((Double) valor);
-//                break;
-//        }
-//        this.fireTableRowsUpdated(linha, linha);
-//    }
-//
-//    @Override
-//    public boolean isCellEditable(int rowIndex, int columnIndex) {
-//        return true;
-//    }
-//
-//    public void addRow(Acao acao) {
-//        this.acoes.add(acao);
-//        this.fireTableDataChanged();
-//    }
-//
-//    public void removeRow(int linha) {
-//        this.acoes.remove(linha);
-//        this.fireTableRowsDeleted(linha, linha);
-//    }
+    @Override
+    public void setValueAt(Object valor, int linha, int coluna) {
+        switch (coluna) {
+            case 0:
+                acoes.get(linha).setNomeAcao((String) valor);
+                break;
+            case 1:
+                acoes.get(linha).setTipoDeOperacao((String) valor);
+                break;
+            case 2:
+                acoes.get(linha).setQuantidade((int) valor);
+            case 4:
+                try {
+                    acoes.get(linha).setValorNaHoraDoRegistro((double) valor);
+                } catch (NumberFormatException nfe) {
+                    acoes.get(linha).setValorNaHoraDoRegistro(0d);
+                }
+                break;
+        }
+        this.fireTableRowsUpdated(linha, linha);
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        return true;
+    }
+
+    public void addRow(Registro acao) {
+        this.acoes.add(acao);
+        this.fireTableDataChanged();
+    }
+
+    public void removeRow(int linha) {
+        this.acoes.remove(linha);
+        this.fireTableRowsDeleted(linha, linha);
+    }
 
     public List<Registro> getAcoes() {
         return acoes;

@@ -2,13 +2,13 @@ package controlador;
 
 import Recursos.Mensagens;
 import modelo.Registro;
+import visao.TelaPrincipal;
 
 import java.util.ArrayList;
 
 public class ControladorRelatorios {
     private ArrayList<Registro> listaDeRegistros;
     private static ControladorRelatorios instanceOfRelatorios;
-
     public ControladorRelatorios() {
         this.listaDeRegistros = new ArrayList<>();
     }
@@ -41,7 +41,7 @@ public class ControladorRelatorios {
         } else if (valorNaCompra > valorAtual){
             return Mensagens.LUCRO;
         }
-        return null;
+        return Mensagens.EMPATE;
     }
 
     private String getSituacaoCompra(double valorAtual, double valorNaCompra) {
@@ -50,6 +50,11 @@ public class ControladorRelatorios {
         } else if (valorNaCompra > valorAtual){
             return Mensagens.PREJUIZO;
         }
-        return null;
+        return Mensagens.EMPATE;
+    }
+
+    public void abreTelaDeRelatorio(TelaPrincipal telaPrincipal) {
+        telaPrincipal.setVisible(false);
+        ControladorPrincipal.getInstance().getTelaRelatorios().setVisible(true);
     }
 }

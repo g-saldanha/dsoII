@@ -17,13 +17,14 @@ public class ControladorPrincipal {
 	private TelaLogin telaLogin;
 	private TelaCadastraUsuario telaCadastraUsuario;
 	private TelaCadastraTransacoes telaCadastraTransacoes;
-	
+	private TelaRelatorios telaRelatorios;
 	
 	private ControladorPrincipal() {
 		
 		this.telaPrincipal = new TelaPrincipal();
 		this.telaLogin = new TelaLogin();
-		this.telaCadastraUsuario = new TelaCadastraUsuario();		
+		this.telaCadastraUsuario = new TelaCadastraUsuario();
+		this.telaRelatorios = new TelaRelatorios();
 		this.centralizaTelas();
 		
 	}
@@ -50,6 +51,7 @@ public class ControladorPrincipal {
 		telaPrincipal.setLocationRelativeTo(null);
 		telaLogin.setLocationRelativeTo(null);
 		telaCadastraUsuario.setLocationRelativeTo(null);
+		telaRelatorios.setLocationRelativeTo(null);
 	}
 	//Abre a Tela Inicial
 	public void abreTelaPrincipal() {		
@@ -88,4 +90,12 @@ public class ControladorPrincipal {
 		
 	}
 
+	public TelaRelatorios getTelaRelatorios() {
+
+		return telaRelatorios;
+	}
+
+	public void setTelaRelatorios(TelaRelatorios telaRelatorios) {
+		this.telaRelatorios = telaRelatorios;
+	}
 }

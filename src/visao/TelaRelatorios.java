@@ -2,6 +2,7 @@ package visao;
 
 import Recursos.Mensagens;
 import controlador.ControladorCarteira;
+import controlador.ControladorPrincipal;
 import modelo.TableModelRelatorios;
 
 import javax.swing.*;
@@ -35,7 +36,7 @@ public class TelaRelatorios extends JFrame {
 	public TelaRelatorios() {
 		setTitle(Mensagens.RELATORIOS);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 748, 541);
+		setBounds(100, 100, 900, 541);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -54,9 +55,18 @@ public class TelaRelatorios extends JFrame {
 		JButton jbtVoltar = new JButton(Mensagens.VOLTAR);
 		jbtVoltar.setBounds(334, 368, 97, 25);
 		contentPane.add(jbtVoltar);
+
+		jbtVoltar.addActionListener(
+				x -> {
+					this.setVisible(false);
+					ControladorPrincipal.getInstance().abreTelaPrincipal();
+				}
+		);
 	}
 
 	private void popularCampos() {
 		ControladorCarteira.popularCamposDaTabelaRelatorios();
 	}
+
+
 }
