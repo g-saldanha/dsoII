@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class CarteiraDAO {
-    private HashMap<String, Carteira> cacheCarteiras = new HashMap<>();
+    private HashMap<Integer, Carteira> cacheCarteiras = new HashMap<Integer, Carteira>();
     private String fileName = "carteiras.cla";
 
     public CarteiraDAO() {
@@ -55,7 +55,7 @@ public class CarteiraDAO {
             FileInputStream fin = new FileInputStream(fileName);
             ObjectInputStream oi = new ObjectInputStream(fin);
 
-            this.cacheCarteiras = (HashMap<String, Carteira>) oi.readObject();
+            this.cacheCarteiras = (HashMap<Integer, Carteira>) oi.readObject();
 
             oi.close();
             fin.close();
@@ -90,6 +90,9 @@ public class CarteiraDAO {
         return new ArrayList<Carteira>(this.getList());
     }
 
+    public void gravaDados() {
+        this.persist();
+    }
     public boolean isEmpty() {
         return false;
     }

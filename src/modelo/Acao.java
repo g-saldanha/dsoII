@@ -1,12 +1,14 @@
 package modelo;
 
-public class Acao {
+import java.io.Serializable;
+
+public class Acao implements Serializable {
     private String nome;
     private int qtd;
     private double valorUnitario;
     private double imposto;
     private double corretagem;
-    private String cpf;
+    private Integer cpf;
     private Double total;
 
     public Acao(String nome, int qtd, double valorUnitario, double corretagem) {
@@ -56,11 +58,11 @@ public class Acao {
         this.corretagem = corretagem;
     }
 
-    public String getCpf() {
+    public Integer getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(Integer cpf) {
         this.cpf = cpf;
     }
 

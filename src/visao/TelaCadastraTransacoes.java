@@ -138,13 +138,16 @@ public class TelaCadastraTransacoes extends JFrame {
         contentPane.add(jbtCancelar);
 
         jbtRegistrar.addActionListener(x->{
+            String mensagem;
             if (jcbTipoDeAcao.getSelectedItem().toString().equals(Mensagens.COMPRAR)) {
-                String mensagem = ControladorCarteira.cadAcao(jcbTipoDeAcao.getSelectedItem().toString(), jcbAcao.getSelectedItem().toString(), Integer.parseInt(jtfQtd.getText()), Double.parseDouble(jlbImposto.getText()), Double.parseDouble(lblVlUnitarioValue.getText()), Double.parseDouble(lblJlbcorretagem.getText()));
+                mensagem = ControladorCarteira.cadAcao(jcbTipoDeAcao.getSelectedItem().toString(), jcbAcao.getSelectedItem().toString(), Integer.parseInt(jtfQtd.getText()), Double.parseDouble(jlbImposto.getText()), Double.parseDouble(lblVlUnitarioValue.getText()), Double.parseDouble(lblJlbcorretagem.getText()));
                 popularCampos();
                 saldoValue.setText(ControladorCarteira.getInstanceCarteira().getValorEmCaixaCateira());
                 JOptionPane.showMessageDialog(null, "" + mensagem);
             } else {
-                JOptionPane.showMessageDialog(null, "algo");
+                mensagem = ControladorCarteira.venderAcao(jcbTipoDeAcao.getSelectedItem().toString(), Integer.parseInt(jtfQtd.getText()), jcbAcao.getSelectedItem().toString(), Double.parseDouble(jlbImposto.getText()), Double.parseDouble(lblJlbcorretagem.getText()), Double.parseDouble(lblVlUnitarioValue.getText()));
+                popularCampos();
+                JOptionPane.showMessageDialog(null, "" + mensagem);
             }
         });
 

@@ -48,9 +48,12 @@ public class Mensagens {
 	public static final String VOLTAR = "Voltar";
     public static final String SITUACAO = "Situacao";
     public static final String VALOR_ATUAL = "Valor Atual";
-    public static final String VALOR_COMPRADO = "Valor Comprado";
+    public static final String VALOR_COMPRADO = "Valor de Aquisicao";
     public static final String TIPO_DE_OPERACAO = "Tipo de Operacao";
-    public static final String PREJUIZO = "Prejuizo" ;
+    public static final String PREJUIZO = "PREJUIZO" ;
     public static final String LUCRO = "LUCRO";
     public static final String EMPATE = "EMPATE";
+    public static final String VOCE_NAO_TEM_ESSA_ACAO = "Voce nao tem essa acao para vender";
+    public static final String VOCE_NAO_TEM_ESSA_QUANTIDADE_DE_ACOES = "Voce nao tem essa quantidade de acoes";
+    public static final String ACAO_VENDIDA_COM_SUCESSO = "Acao vendida com sucesso";
 }

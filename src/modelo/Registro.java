@@ -1,6 +1,8 @@
 package modelo;
 
-public class Registro {
+import java.io.Serializable;
+
+public class Registro implements Serializable {
     private String nomeAcao;
     private String tipoDeOperacao;
     private int quantidade;

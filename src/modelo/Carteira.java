@@ -1,20 +1,20 @@
 package modelo;
 
 
-import java.lang.reflect.Array;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Carteira {
+public class Carteira implements Serializable {
     private double caixa;
-    private String cpf;
+    private Integer cpf;
     private String numeroDaCarteira;
     private ArrayList<Acao> acoes;
     private double saldo;
     private Transacao[] transacoes;
     private ArrayList<Registro> registros;
 
-    public Carteira(String cpf, Double saldo) {
+    public Carteira(Integer cpf, Double saldo) {
         this.cpf = cpf;
         this.numeroDaCarteira = Integer.toString(this.hashCode());
         this.acoes = new ArrayList<>();
@@ -25,13 +25,13 @@ public class Carteira {
 
     
 
-    public String getCpf() {
-		return cpf;
+    public Integer getCpf() {
+    return cpf;
 	}
 
 
 
-	public void setCpf(String cpf) {
+	public void setCpf(Integer cpf) {
 		this.cpf = cpf;
 	}
 

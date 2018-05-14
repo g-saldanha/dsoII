@@ -52,7 +52,7 @@ public class TelaLogin extends JDialog {
 			contentPanel.add(okButton);
 			okButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-						ControladorPrincipal.getInstance().carregaUsuario(jtfCpfLogin.getText());
+						ControladorPrincipal.getInstance().carregaUsuario(Integer.parseInt(jtfCpfLogin.getText()));
 				}
 			});
 			okButton.setActionCommand(Mensagens.OK);

@@ -2,21 +2,19 @@ package controlador;
 
 import Recursos.Mensagens;
 import modelo.*;
+import org.omg.PortableInterceptor.INACTIVE;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
-import java.awt.*;
-import java.util.ArrayList;
+import static Recursos.Mensagens.ACAO;
 
 public class ControladorCarteira {
     private static ControladorCarteira instanceCarteira;
-    private static ArrayList<Carteira> listaDeCarteiras;
+    private CarteiraDAO listaDeCarteiras;
     private static Carteira carteiraEmUSo;
 
     private ControladorCarteira() {
-        listaDeCarteiras = new ArrayList();
+    	listaDeCarteiras = new CarteiraDAO();
     }
 
     public static ControladorCarteira getInstanceCarteira(){
@@ -26,13 +24,9 @@ public class ControladorCarteira {
         return instanceCarteira;
     }
 
-    public static ArrayList<Carteira> getListaDeCarteiras() {
-        return listaDeCarteiras;
-    }
-
-    public static void setListaDeCarteiras(ArrayList<Carteira> listaDeCarteiras) {
-        ControladorCarteira.listaDeCarteiras = listaDeCarteiras;
-    }
+	public CarteiraDAO getListaDeCarteiras() {
+		return listaDeCarteiras;
+	}
 
 	public static void popularCamposDaTabela() {
 			TableModelAcoes.getInstance().setAcoes(carteiraEmUSo.getAcoes());
@@ -105,6 +99,7 @@ public class ControladorCarteira {
 				carteiraEmUSo.setSaldo(carteiraEmUSo.getSaldo()-valorTotalAcao);
 				popularCamposDaTabela();
 				carteiraEmUSo.getRegistros().add(new Registro(nome, qtd, qtd * valorUnitario, tipo));
+				getInstanceCarteira().listaDeCarteiras.put(carteiraEmUSo);
 				return Mensagens.ACAO_COMPRADA_COM_SUCESSO;
 			} else {
 				return Mensagens.VOCE_NAO_TEM_SALDO;
@@ -113,7 +108,8 @@ public class ControladorCarteira {
 		}else {
 			return Mensagens.ACAO_NAO_COMPRADA;
 		}
-    }
+
+	}
 
 	public static void acrescentaAcao(Acao compra) {
 		boolean cadastrado = false;
@@ -122,40 +118,47 @@ public class ControladorCarteira {
 					acao.setQtd(acao.getQtd() + compra.getQtd());
 					cadastrado = true;
 				}
-			}				
+			}
 			if (cadastrado == false) {
 				carteiraEmUSo.getAcoes().add(compra);
-				
+
 			}
-							
+	}
+
+	public static void reduzAcao(Acao venda, Integer qtd) {
+		if (venda.getQtd() == qtd){
+			carteiraEmUSo.getAcoes().remove(venda);
+		} else {
+			venda.setQtd(venda.getQtd() - qtd);
+		}
 	}
 
 
 
-	public boolean cadastrarCarteira(String cpf, String saldo){
+	public boolean cadastrarCarteira(Integer cpf, String saldo){
     	if(!existeUsuario(cpf)) {
-    		getListaDeCarteiras().add(new Carteira(cpf, Double.parseDouble(saldo)));
+    		listaDeCarteiras.put(new Carteira(cpf, Double.parseDouble(saldo)));
     		return true;
     	}
 		return false;
     }
 
-	public boolean carregaUsuario(String text) {
-		for(Carteira carteira: listaDeCarteiras) {
-			if(carteira.getCpf().equals(text)) {
+	public boolean carregaUsuario(Integer text) {
+		for(Carteira carteira: listaDeCarteiras.getCarteiras()) {
+			if (carteira.getCpf().equals(text)) {
 				carteiraEmUSo = carteira;
 				return true;
-			}			
+			}
 		}
 		return false;
 		
 	}
-	
-	public boolean existeUsuario(String text) {
-		for(Carteira carteira: listaDeCarteiras) {
+
+	public boolean existeUsuario(Integer text) {
+		for(Carteira carteira: listaDeCarteiras.getCarteiras()) {
 			if(carteira.getCpf().equals(text)) {
 				return true;
-			}			
+			}
 		}
 		return false;
 	}
@@ -165,12 +168,43 @@ public class ControladorCarteira {
 	}
 
 
-	public void venderAcao(String tipo, String qtd, String nome, Double imposto, Double corretagem, Double valorUnitario) {
-		if (tipo.equals(Mensagens.VENDER)) {
+	public static String venderAcao(String tipo, Integer qtd, String nome, Double imposto, Double corretagem, Double valorUnitario) {
+		Acao acao = null;
+//		Verifica acao
+		for (Acao acaoNoFor : carteiraEmUSo.getAcoes()
+			 ) {
+			if (acaoNoFor.getNome().equals(nome)){
+				acao = acaoNoFor;
+			}
 
-		} else {
-			JOptionPane.showMessageDialog(null, Mensagens.ACAO_NAO_VENDIDA);
 		}
+
+		if (tipo.equals(Mensagens.VENDER)) {
+//			Verifica nulo
+			if (acao == null) {
+				return Mensagens.VOCE_NAO_TEM_ESSA_ACAO;
+			}
+//			Verifica quantidade
+			else if(acao.getQtd() < qtd){
+				return Mensagens.VOCE_NAO_TEM_ESSA_QUANTIDADE_DE_ACOES;
+			}
+//			Faz a venda
+			else {
+//				Tira a acao a lista
+				reduzAcao(acao, qtd);
+//			faz a corretagem e cobra imposto e inclui saldo na carteira
+				double valorDaVenda = qtd * valorUnitario;
+				double valorTotalDaVenda = valorDaVenda - corretagem - imposto;
+				carteiraEmUSo.setSaldo(carteiraEmUSo.getSaldo() + valorDaVenda);
+				popularCamposDaTabela();
+				carteiraEmUSo.getRegistros().add(new Registro(nome, qtd, valorDaVenda, tipo));
+				getInstanceCarteira().listaDeCarteiras.put(carteiraEmUSo);
+				return Mensagens.ACAO_VENDIDA_COM_SUCESSO;
+			}
+		}
+
+		return Mensagens.ACAO_NAO_VENDIDA;
+
     }
 
 	public static Carteira getCarteiraEmUSo() {

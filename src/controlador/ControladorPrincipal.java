@@ -1,13 +1,8 @@
 package controlador;
 
-import javax.naming.ldap.Control;
 import javax.swing.*;
 
-import com.sun.corba.se.spi.orbutil.fsm.State;
-
 import Recursos.Mensagens;
-import modelo.Carteira;
-import sun.invoke.empty.Empty;
 import visao.*;
 
 public class ControladorPrincipal {
@@ -67,7 +62,7 @@ public class ControladorPrincipal {
 		telaCadastraUsuario.setVisible(true);		
 	}
 	
-	public void carregaUsuario(String text) {
+	public void carregaUsuario(Integer text) {
 			if(ControladorCarteira.getInstanceCarteira().carregaUsuario(text)) {
 				JOptionPane.showMessageDialog(null, Mensagens.USUARIO_CARREGADO);
 				telaLogin.setVisible(false);
@@ -80,7 +75,7 @@ public class ControladorPrincipal {
 			}				
 	}
 
-	public void cadastraUsuario(String text, String saldo) {
+	public void cadastraUsuario(Integer text, String saldo) {
 		if(ControladorCarteira.getInstanceCarteira().cadastrarCarteira(text, saldo)) {
 			JOptionPane.showMessageDialog(null, Mensagens.USUARIO_CADASTRADO); 
 			telaCadastraUsuario.setVisible(false);
