@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Reserva de Dvds</title>
+    </h:head>
+    <h:body>
+        <h1 align="center">Gaiteiro e Cervejeiro Viagens</h1>
+        
+        <p:growl id="growl" sticky="true" showDetail="true"/>
+        <h:form>
+            <p:panelGrid columns="2" style="position: absolute; top: 250px; left: 515px">
+                    <p:outputLabel value="Login:" for="login" />
+                    <p:inputText id="login" value="#{loginControle.login}" title="Login" required="true" requiredMessage="É necessário informar o e-mail de cadastro." />
+                     <p:outputLabel value="Senha:" for="senha" />
+                     <p:password id="senha" value="#{loginControle.senha}" label="Senha" required="true" requiredMessage="É necessário informar a senha de cadastro." />
+                     
+                     <p:commandButton value="Entrar" action="#{loginControle.logar()}" update="growl"> </p:commandButton>
+                    <br/>
+                </p:panelGrid>
+                <p:link value="Não possui cadastro? Cadastre-se aqui!" outcome="cadastro" style="position: absolute; top: 380px; left: 515px" ></p:link>
+        </h:form>
+    </h:body>
+</html>
+            
+                    
+
+    

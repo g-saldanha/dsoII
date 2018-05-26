@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Reserva de Dvds</title>
+    </h:head>
+    <h:body>
+        <h1>Gaiteiro e Cervejeiro Viagens</h1>
+        <h:form>
+            <p:menubar>
+                <p:menuitem value="Minhas Reservas" outcome="listaReservas" icon="ui-icon-search"></p:menuitem>
+                <p:menuitem value="Logout" action="#{loginControle.fazerLogout()}" icon="ui-icon-close" />
+                
+            </p:menubar>
+            <br/>
+            <p:dataTable widgetVar="Lista de Dvds" var="passagem" value="#{passagemControle.DvdsDisponiveis}">
+                <f:facet name="header"> Lista de Dvds </f:facet>
+            
+                <p:column sortBy="#{passagem.cidadeOrigem}" filterBy="#{passagem.cidadeOrigem}">
+                    <f:facet name="header" >Origem</f:facet>
+                    <h:outputText value="#{passagem.cidadeOrigem}"></h:outputText>
+                </p:column>
+                
+                <p:column sortBy="#{passagem.cidadeDestino}" filterBy="#{passagem.cidadeDestino}">
+                    <f:facet name="header" >Destino</f:facet>
+                    <h:outputText value="#{passagem.cidadeDestino}"></h:outputText>
+                </p:column>
+                
+                <p:column sortBy="#{passagem.data}" filterBy="#{passagem.data}">
+                    <f:facet name="header" >Data</f:facet>
+                    <h:outputText value="#{passagem.data}"> <f:convertDateTime pattern="d-MM-yyyy" /> </h:outputText>
+                </p:column>
+                
+                <p:column sortBy="#{passagem.horario}" filterBy="#{passagem.horario}">
+                    <f:facet name="header" >Horário</f:facet>
+                    <h:outputText value="#{passagem.horario}"></h:outputText>
+                </p:column>
+                
+                <p:column sortBy="#{passagem.valor}" filterBy="#{passagem.valor}">
+                    <f:facet name="header" >Valor</f:facet>
+                    <h:outputText value="#{passagem.valor}"></h:outputText>
+                </p:column>
+                
+                <p:column sortBy="#{passagem.assento}" filterBy="#{passagem.assento}">
+                    <f:facet name="header" >Assento</f:facet>
+                    <h:outputText value="#{passagem.assento}"></h:outputText>
+                </p:column>
+                
+                <p:column headerText="Reserva">
+                    <p:commandButton value="Reservar" action="#{passagemControle.reservar(passagem)}" actionListener="#{passagemControle.reload()}" ></p:commandButton>
+                </p:column>
+                    
+                
+                </p:dataTable>  
+            
+        </h:form>    
+    </h:body>
+</html>
+                
+ 
+                    
+
