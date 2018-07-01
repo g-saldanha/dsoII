@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/build/lib/primefaces-6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/lib/blitzer-1.0.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/lib/start-1.0.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/lib/log4j-1.2.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/build/lib/redmond-1.0.10.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -7,7 +7,7 @@ package controladores;
 
 /**
  *
- * @author Leonardo
+ * @author Gabriel
  */
 public class Passagem {
     

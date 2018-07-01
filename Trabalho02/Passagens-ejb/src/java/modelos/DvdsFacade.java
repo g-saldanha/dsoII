@@ -6,8 +6,8 @@
 package modelos;
 
 import entidades.Clientes;
+import entidades.Dvds;
 import entidades.Passagens;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -16,32 +16,29 @@ import javax.persistence.Query;
 
 /**
  *
- * @author Gabriel
+ * @author gabri
  */
 @Stateless
-public class PassagensFacade extends AbstractFacade<Passagens> {
-
+public class DvdsFacade extends AbstractFacade<Dvds>{
     @PersistenceContext(unitName = "Passagens-ejbPU")
     private EntityManager em;
-
+    
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
 
-    public PassagensFacade() {
-        super(Passagens.class);
+    public DvdsFacade() {
+        super(Dvds.class);
     }
     
     
-    public void reservarPassagemParaCliente(Passagens passagem, Clientes cliente) {
-        passagem.setFkidCliente(cliente);
+    public void emprestarDvdParaCliente(Dvds dvd, Clientes cliente) {
+        dvd.setEmprestado(cliente);
         // Definir na passagem existe que ela está reservada
-        passagem.setDisponibilidadade(0);
-        this.em.merge(passagem);
-    }
-        
-        
+        this.em.merge(dvd);
+    }       
     
     public void cancelarReservaDoCliente(Passagens passagem, Clientes cliente){
         passagem.setFkidCliente(null);
@@ -61,6 +58,4 @@ public class PassagensFacade extends AbstractFacade<Passagens> {
     }    
         
         
-    
-    
 }

@@ -20,7 +20,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author Leonardo
+ * @author Gabriel
  */
 @Named(value = "loginControle")
 @SessionScoped

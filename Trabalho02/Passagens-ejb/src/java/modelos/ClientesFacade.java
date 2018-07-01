@@ -16,12 +16,12 @@ import javax.persistence.Query;
 
 /**
  *
- * @author Gabriel e Jose Carlos Martins
+ * @author Gabriel
  */
 @Stateless
 public class ClientesFacade extends AbstractFacade<Clientes> {
 
-    @PersistenceContext(unitName = "Dvds-ejbPU")
+    @PersistenceContext(unitName = "Passagens-ejbPU")
     private EntityManager em;
 
     @Override
@@ -53,5 +53,6 @@ public class ClientesFacade extends AbstractFacade<Clientes> {
         return cliente;
 
     }
+    
     
 }

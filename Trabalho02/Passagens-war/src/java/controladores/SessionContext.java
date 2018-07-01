@@ -10,7 +10,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 /**
  *
- * @author Leonardo
+ * @author Gabriel
  */
 public class SessionContext {
     

@@ -14,7 +14,7 @@ is divided into following sections:
   - cleanup
 
 -->
-<project xmlns:ear2="http://www.netbeans.org/ns/j2ee-earproject/2" basedir=".." default="default" name="Dvds-impl">
+<project xmlns:ear2="http://www.netbeans.org/ns/j2ee-earproject/2" basedir=".." default="default" name="Passagens-impl">
     <import file="ant-deploy.xml"/>
     <fail message="Please build using Ant 1.7.1 or higher.">
         <condition>
@@ -201,11 +201,11 @@ exists or setup the property manually. For example like this:
                 <isset property="build.deploy.on.save"/>
             </not>
         </condition>
-        <ant antfile="${project.Dvds-ejb}/build.xml" inheritall="false" target="dist-ear">
+        <ant antfile="${project.Passagens-ejb}/build.xml" inheritall="false" target="dist-ear">
             <property location="${build.dir}" name="dist.ear.dir"/>
             <property name="deploy.on.save" value="${build.deploy.on.save}"/>
         </ant>
-        <ant antfile="${project.Dvds-war}/build.xml" inheritall="false" target="dist-ear">
+        <ant antfile="${project.Passagens-war}/build.xml" inheritall="false" target="dist-ear">
             <property location="${build.dir}" name="dist.ear.dir"/>
             <property name="deploy.on.save" value="${build.deploy.on.save}"/>
         </ant>
@@ -221,8 +221,8 @@ exists or setup the property manually. For example like this:
         </copy>
     </target>
     <target depends="init,deps-jar,pre-pre-compile,pre-compile" name="-do-compile-deps">
-        <copyfiles files="${reference.Dvds-war.dist-ear}" todir="${build.dir}//"/>
-        <copyfiles files="${reference.Dvds-ejb.dist-ear}" todir="${build.dir}//"/>
+        <copyfiles files="${reference.Passagens-war.dist-ear}" todir="${build.dir}//"/>
+        <copyfiles files="${reference.Passagens-ejb.dist-ear}" todir="${build.dir}//"/>
     </target>
     <target name="post-compile">
         <!-- Empty placeholder for easier customization. -->
@@ -299,8 +299,8 @@ exists or setup the property manually. For example like this:
     </target>
     <target name="-run-deploy-am" unless="no.deps">
         <!-- Task to deploy to the Access Manager runtime. -->
-        <ant antfile="${project.Dvds-ejb}/build.xml" inheritall="false" target="-run-deploy-am"/>
-        <ant antfile="${project.Dvds-war}/build.xml" inheritall="false" target="-run-deploy-am"/>
+        <ant antfile="${project.Passagens-ejb}/build.xml" inheritall="false" target="-run-deploy-am"/>
+        <ant antfile="${project.Passagens-war}/build.xml" inheritall="false" target="-run-deploy-am"/>
     </target>
     <target depends="-init-cos,dist-directory-deploy,pre-run-deploy,-pre-nbmodule-run-deploy,-run-deploy-nb,-init-deploy-ant,-deploy-ant,-run-deploy-am,-post-nbmodule-run-deploy,post-run-deploy" name="run-deploy"/>
     <target if="netbeans.home" name="-run-deploy-nb">
@@ -407,17 +407,17 @@ exists or setup the property manually. For example like this:
         <ear2:run-appclient subprojectname="${app.client}"/>
     </target>
     <target if="j2ee.appclient.mainclass.args" name="-as-retrieve-option-workaround" unless="j2ee.clientName">
-        <property name="client.jar" value="${dist.dir}/DvdsClient.jar"/>
+        <property name="client.jar" value="${dist.dir}/PassagensClient.jar"/>
         <sleep seconds="3"/>
-        <copy failonerror="false" file="${wa.copy.client.jar.from}/Dvds/DvdsClient.jar" todir="${dist.dir}"/>
+        <copy failonerror="false" file="${wa.copy.client.jar.from}/Passagens/PassagensClient.jar" todir="${dist.dir}"/>
         <copy failonerror="false" flatten="true" todir="${dist.dir}/">
-            <fileset dir="${wa.copy.client.jar.from}/Dvds" includes="**/DvdsClient.jar"/>
+            <fileset dir="${wa.copy.client.jar.from}/Passagens" includes="**/PassagensClient.jar"/>
         </copy>
-        <copy flatten="true" todir="${dist.dir}/DvdsClient">
-            <fileset dir="${wa.copy.client.jar.from}/Dvds" includes="**/*.*ar"/>
+        <copy flatten="true" todir="${dist.dir}/PassagensClient">
+            <fileset dir="${wa.copy.client.jar.from}/Passagens" includes="**/*.*ar"/>
         </copy>
-        <copy failonerror="false" flatten="false" todir="${dist.dir}/DvdsClient">
-            <fileset dir="${dist.dir}/gfdeploy/Dvds" includes="**/*.jar"/>
+        <copy failonerror="false" flatten="false" todir="${dist.dir}/PassagensClient">
+            <fileset dir="${dist.dir}/gfdeploy/Passagens" includes="**/*.jar"/>
         </copy>
     </target>
     <target depends="init" name="-init-run-macros">
@@ -625,11 +625,11 @@ exists or setup the property manually. For example like this:
                 <isset property="build.deploy.on.save"/>
             </not>
         </condition>
-        <ant antfile="${project.Dvds-ejb}/build.xml" inheritall="false" target="clean-ear">
+        <ant antfile="${project.Passagens-ejb}/build.xml" inheritall="false" target="clean-ear">
             <property location="${build.dir}" name="dist.ear.dir"/>
             <property name="deploy.on.save" value="${build.deploy.on.save}"/>
         </ant>
-        <ant antfile="${project.Dvds-war}/build.xml" inheritall="false" target="clean-ear">
+        <ant antfile="${project.Passagens-war}/build.xml" inheritall="false" target="clean-ear">
             <property location="${build.dir}" name="dist.ear.dir"/>
             <property name="deploy.on.save" value="${build.deploy.on.save}"/>
         </ant>

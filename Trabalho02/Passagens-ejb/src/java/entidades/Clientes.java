@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Gabriel e Jose Carlos Martins
+ * @author Gabriel
  */
 @Entity
 @Table(name = "CLIENTES")
@@ -40,8 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Clientes.findBySenha", query = "SELECT c FROM Clientes c WHERE c.senha = :senha")
     , @NamedQuery(name = "Clientes.login", query = "SELECT c FROM Clientes c WHERE c.email = :email AND c.senha = :senha")})
 public class Clientes implements Serializable {
-
-
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -70,7 +68,7 @@ public class Clientes implements Serializable {
     private String email;
     @Column(name = "SENHA")
     private String senha;
-
+    
     public Clientes() {
     }
 

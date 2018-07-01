@@ -25,136 +25,100 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Gabriel e Jose Carlos Martins
+ * @author gabri
  */
 @Entity
-@Table(name = "Dvds")
+@Table(name = "DVDS")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Dvds.findAll", query = "SELECT p FROM Dvds p")
-    , @NamedQuery(name = "Dvds.findByIdDVD", query = "SELECT p FROM Dvds p WHERE p.idDVD = :idDVD")
-    , @NamedQuery(name = "Dvds.findByData", query = "SELECT p FROM Dvds p WHERE p.data = :data")
-    , @NamedQuery(name = "Dvds.findByDataLancamento", query = "SELECT p FROM Dvds p WHERE p.DataLancamento = :DataLancamento")
-    , @NamedQuery(name = "Dvds.findByGenero", query = "SELECT p FROM Dvds p WHERE p.Genero = :Genero")
-    , @NamedQuery(name = "Dvds.findByValor", query = "SELECT p FROM Dvds p WHERE p.valor = :valor")
-    , @NamedQuery(name = "Dvds.findByDisponibilidadade", query = "SELECT p FROM Dvds p WHERE p.disponibilidadade = :disponibilidadade")
-    , @NamedQuery(name = "Dvds.findByDisponibilidadadeTrue", query = "SELECT p FROM Dvds p WHERE p.disponibilidadade = 1")
-    , @NamedQuery(name = "Dvds.findDvdsByCliente", query = "SELECT DVD FROM Dvds DVD JOIN DVD.fkidCliente clientes WHERE clientes.idCliente = :idCliente")})
+     @NamedQuery(name = "DVDS.findAll", query = "SELECT p FROM DVDS p")
+    , @NamedQuery(name = "DVDS.findByIdPassagem", query = "SELECT p FROM DVDS p WHERE p. = :idPassagem")
+    , @NamedQuery(name = "DVDS.findByData", query = "SELECT p FROM DVDS p WHERE p.data = :data")
+    , @NamedQuery(name = "DVDS.findByCidadeOrigem", query = "SELECT p FROM DVDS p WHERE p.cidadeOrigem = :cidadeOrigem")
+    , @NamedQuery(name = "DVDS.findByCidadeDestino", query = "SELECT p FROM DVDS p WHERE p.cidadeDestino = :cidadeDestino")
+    , @NamedQuery(name = "DVDS.findByValor", query = "SELECT p FROM DVDS p WHERE p.valor = :valor")
+    , @NamedQuery(name = "DVDS.findByAssento", query = "SELECT p FROM DVDS p WHERE p.assento = :assento")
+    , @NamedQuery(name = "DVDS.findByDisponibilidadade", query = "SELECT p FROM DVDS p WHERE p.disponibilidadade = :disponibilidadade")
+    , @NamedQuery(name = "DVDS.findByDisponibilidadadeTrue", query = "SELECT p FROM DVDS p WHERE p.disponibilidadade = 1")
+    , @NamedQuery(name = "DVDS.findByHorario", query = "SELECT p FROM DVDS p WHERE p.horario = :horario")
+    , @NamedQuery(name = "DVDS.findDVDSByCliente", query = "SELECT passagem FROM DVDS passagem JOIN passagem.fkidCliente clientes WHERE clientes.idCliente = :idCliente")
+})
+public class Dvds implements Serializable{
     
-public class Dvds implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "ID_DVD")
-    private Integer idDVD;
-    @Column(name = "DATA")
+    private Integer idDvd;
+    @Column(name = "TITULO")
     @Temporal(TemporalType.DATE)
-    private Date data;
-    @Size(max = 30)
-    @Column(name = "DATA_LANCAMENTO")
-    private String DataLancamento;
+    private Date titulo;
     @Size(max = 30)
     @Column(name = "GENERO")
-    private String Genero;
-    @Column(name = "VALOR")
-    private String valor;
-    @Column(name = "DISPONIBILIDADADE")
-    private Integer disponibilidadade;
+    private String genero;
+    @Size(max = 30)
+    @Column(name = "ANO")
+    private String ano;
+    @JoinColumn(name = "FKID_CLIENTE_EMPRESTIMO", referencedColumnName = "ID_CLIENTE")
+    @ManyToOne
+    private Clientes emprestado;
     @JoinColumn(name = "FKID_CLIENTE", referencedColumnName = "ID_CLIENTE")
     @ManyToOne
     private Clientes fkidCliente;
-   
+
+    public Dvds() {
+    }
+
+    public Integer getIdDvd() {
+        return idDvd;
+    }
+
+    public void setIdDvd(Integer idDvd) {
+        this.idDvd = idDvd;
+    }
+
+    public Date getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(Date titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getAno() {
+        return ano;
+    }
+
+    public void setAno(String ano) {
+        this.ano = ano;
+    }
+
+    public Clientes getEmprestado() {
+        return emprestado;
+    }
+
+    public void setEmprestado(Clientes emprestado) {
+        this.emprestado = emprestado;
+    }
+
     public Clientes getFkidCliente() {
         return fkidCliente;
     }
 
     public void setFkidCliente(Clientes fkidCliente) {
         this.fkidCliente = fkidCliente;
-    }    
+    }
+     
     
-    public Dvds() {
-    }
-
-    public Dvds(Integer idDVD) {
-        this.idDVD = idDVD;
-    }
-
-    public Integer getIdDVD() {
-        return idDVD;
-    }
-
-    public void setIdDVD(Integer idDVD) {
-        this.idDVD = idDVD;
-    }
-
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
-
-
     
-
-    public String getDataLancamento() {
-        return DataLancamento;
-    }
-
-    public void setDataLancamento(String DataLancamento) {
-        this.DataLancamento = DataLancamento;
-    }
-
-    public String getGenero() {
-        return Genero;
-    }
-
-    public void setGenero(String Genero) {
-        this.Genero = Genero;
-    }
-
-    public String getValor() {
-        return valor;
-    }
-
-    public void setValor(String valor) {
-        this.valor = valor;
-    }
-
-    public Integer getDisponibilidadade() {
-        return disponibilidadade;
-    }
-
-    public void setDisponibilidadade(Integer disponibilidadade) {
-        this.disponibilidadade = disponibilidadade;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idDVD != null ? idDVD.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Dvds)) {
-            return false;
-        }
-        Dvds other = (Dvds) object;
-        if ((this.idDVD == null && other.idDVD != null) || (this.idDVD != null && !this.idDVD.equals(other.idDVD))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "entidades.Dvds[ idDVD=" + idDVD + " ]";
-    }
     
 }

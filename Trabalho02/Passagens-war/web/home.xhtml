@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Reserva de Dvds</title>
+        <title>Reserva de Passagens</title>
     </h:head>
     <h:body>
         <h1>Gaiteiro e Cervejeiro Viagens</h1>
@@ -16,8 +16,8 @@
                 
             </p:menubar>
             <br/>
-            <p:dataTable widgetVar="Lista de Dvds" var="passagem" value="#{passagemControle.DvdsDisponiveis}">
-                <f:facet name="header"> Lista de Dvds </f:facet>
+            <p:dataTable widgetVar="Lista de Passagens" var="passagem" value="#{passagemControle.passagensDisponiveis}">
+                <f:facet name="header"> Lista de Passagens </f:facet>
             
                 <p:column sortBy="#{passagem.cidadeOrigem}" filterBy="#{passagem.cidadeOrigem}">
                     <f:facet name="header" >Origem</f:facet>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Passagens-ejb1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Passagens-ejb/dist/Passagens-ejb.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

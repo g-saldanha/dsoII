@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Passagens.iml" filepath="$PROJECT_DIR$/.idea/Passagens.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Passagens-ejb/src/Passagens-ejb.iml" filepath="$PROJECT_DIR$/Passagens-ejb/src/Passagens-ejb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Passagens-war/src/Passagens-war.iml" filepath="$PROJECT_DIR$/Passagens-war/src/Passagens-war.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Passagens-ejb/build/generated-sources/generated-sources.iml" filepath="$PROJECT_DIR$/Passagens-ejb/build/generated-sources/generated-sources.iml" />
     </modules>
   </component>
 </project>

@@ -6,7 +6,7 @@
 package controladores;
 
 import entidades.Clientes;
-import entidades.Dvds;
+import entidades.Passagens;
 import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -17,12 +17,12 @@ import javax.ejb.EJB;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
-import modelos.DvdsFacade;
+import modelos.PassagensFacade;
 
 
 /**
  *
- * @author Leonardo
+ * @author Gabriel
  */
 @Named(value = "passagemControle")
 @SessionScoped
@@ -30,47 +30,47 @@ public class PassagemControle implements Serializable {
 
  
     @EJB
-    private DvdsFacade passagemFacade;
-    private Dvds passagem = new Dvds();
+    private PassagensFacade passagemFacade;
+    private Passagens passagem = new Passagens();
     
     private LoginControle loginControle = new LoginControle();
     
     public PassagemControle() {
     }
 
-    public Dvds getPassagem() {
+    public Passagens getPassagem() {
         return passagem;
     }
 
-    public void setPassagem(Dvds passagem) {
+    public void setPassagem(Passagens passagem) {
         this.passagem = passagem;
     }
     
-    public List <Dvds> getListaDvds(){
+    public List <Passagens> getListaPassagens(){
         return this.passagemFacade.findAll();
     }
     
    
     
-    public void reservar(Dvds passagem){
+    public void reservar(Passagens passagem){
        try{
         passagemFacade.reservarPassagemParaCliente(passagem, this.loginControle.getUserBO());
-       getDvdsDisponiveis();
+       getPassagensDisponiveis();
        }catch(Exception e){
            
        }
     }
         
     
-    public void cancelarReserva(Dvds passagem){
+    public void cancelarReserva(Passagens passagem){
         passagemFacade.cancelarReservaDoCliente(passagem, this.loginControle.getUserBO());
     }
     
-    public List <Dvds> getDvdsDisponiveis(){
-        return passagemFacade.listarDvdsDisponiveis();
+    public List <Passagens> getPassagensDisponiveis(){
+        return passagemFacade.listarPassagensDisponiveis();
     }
     
-    public List <Dvds> getReservas(){
+    public List <Passagens> getReservas(){
         Clientes cliente = this.loginControle.getUserBO();   
         return passagemFacade.listarReservas(cliente);
     }

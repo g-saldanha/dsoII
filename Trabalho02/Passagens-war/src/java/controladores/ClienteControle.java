@@ -18,7 +18,7 @@ import org.primefaces.component.inputtext.InputText;
 
 /**
  *
- * @author Leonardo
+ * @author Gabriel
  */
 
 @Named(value = "clienteControle")

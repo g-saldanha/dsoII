@@ -10,7 +10,7 @@
     <h:body>
         <h:form>
             
-            <p:dataTable widgetVar="Lista de Dvds" var="passagem" value="#{passagemControle.listaDvds}">
+            <p:dataTable widgetVar="Lista de Passagens" var="passagem" value="#{passagemControle.listaPassagens}">
             
                 <p:column sortBy="#{passagem.cidadeOrigem}" filterBy="#{passagem.cidadeOrigem}">
                     <f:facet name="header" >Origem</f:facet>
