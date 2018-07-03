@@ -40,22 +40,13 @@ public class DvdsFacade extends AbstractFacade<Dvds>{
         this.em.merge(dvd);
     }       
     
-    public void cancelarReservaDoCliente(Passagens passagem, Clientes cliente){
-        passagem.setFkidCliente(null);
-        passagem.setDisponibilidadade(1);
-        this.em.merge(passagem);
+    public void devolverDvdParaCliente(Dvds dvd, Clientes cliente){
+        dvd.setEmprestado(null);
+        this.em.merge(dvd);
     }
     
-    public List <Passagens> listarPassagensDisponiveis(){
-        Query query = em.createNamedQuery("Passagens.findByDisponibilidadadeTrue");
+    public List <Dvds> listarDvds(){
+        Query query = em.createNamedQuery("DVDS.buscaTodos");
         return query.getResultList();
-    }
-    
-    public List <Passagens> listarReservas(Clientes cliente){
-        Query query = em.createNamedQuery("Passagens.findPassagensByCliente");
-        query.setParameter("idCliente", cliente.getIdCliente());
-        return query.getResultList();
-    }    
-        
-        
+    }          
 }

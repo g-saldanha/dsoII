@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "DVDS")
 @XmlRootElement
 @NamedQueries({
-     @NamedQuery(name = "DVDS.findAll", query = "SELECT p FROM DVDS p")
+     @NamedQuery(name = "DVDS.buscaTodos", query = "SELECT p FROM DVDS p")
     , @NamedQuery(name = "DVDS.findByIdPassagem", query = "SELECT p FROM DVDS p WHERE p. = :idPassagem")
     , @NamedQuery(name = "DVDS.findByData", query = "SELECT p FROM DVDS p WHERE p.data = :data")
     , @NamedQuery(name = "DVDS.findByCidadeOrigem", query = "SELECT p FROM DVDS p WHERE p.cidadeOrigem = :cidadeOrigem")
