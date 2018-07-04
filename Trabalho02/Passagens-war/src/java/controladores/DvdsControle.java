@@ -5,6 +5,7 @@
  */
 package controladores;
 
+import entidades.Clientes;
 import entidades.Dvds;
 import java.io.IOException;
 import java.io.Serializable;
@@ -14,7 +15,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.inject.Scope;
 import javax.servlet.http.HttpServletRequest;
 import modelos.DvdsFacade;
 
@@ -25,6 +25,8 @@ import modelos.DvdsFacade;
 @Named(value = "dvdsControle")
 @SessionScoped
 public class DvdsControle implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     @EJB
     private DvdsFacade dvdsFacade;
@@ -46,6 +48,37 @@ public class DvdsControle implements Serializable{
 
     public List<Dvds> getListaDeDvds(){
         return this.dvdsFacade.listarDvds();
+    }
+    
+    /**
+     *
+     * @param dvd
+     * @param cliente
+     * @return
+     */
+    public String emprestar(Dvds dvd, Clientes cliente){
+        if (dvd.getEmprestado() == null) {
+            try {
+                dvdsFacade.emprestarDvdParaCliente(dvd, cliente);
+                return "Emprestimo feito com sucesso para" + cliente.getNome();
+            } catch (Exception e) {
+                return "Nao deu para emprestar";
+            }
+        }
+                
+        return "Por algum motivo nao foi possivel emprestar o dvd";
+    }
+    
+    public String devolver(Dvds dvd){
+        if (dvd.getEmprestado() != null) {
+            try {
+                dvdsFacade.devolverDvdParaCliente(dvd);
+            } catch (Exception e) {
+                return "Nao foi possivel devolver o dvd";
+            }
+        }
+             
+        return "Nao foi possivel devolver o dvd";      
     }
     
     

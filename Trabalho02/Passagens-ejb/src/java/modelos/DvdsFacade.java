@@ -40,7 +40,7 @@ public class DvdsFacade extends AbstractFacade<Dvds>{
         this.em.merge(dvd);
     }       
     
-    public void devolverDvdParaCliente(Dvds dvd, Clientes cliente){
+    public void devolverDvdParaCliente(Dvds dvd){
         dvd.setEmprestado(null);
         this.em.merge(dvd);
     }

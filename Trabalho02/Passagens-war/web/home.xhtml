@@ -5,57 +5,72 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Reserva de Passagens</title>
+        <title>Trocas de DVDS</title>
     </h:head>
     <h:body>
-        <h1>Gaiteiro e Cervejeiro Viagens</h1>
+        <h1>Dvdteca</h1>
         <h:form>
             <p:menubar>
-                <p:menuitem value="Minhas Reservas" outcome="listaReservas" icon="ui-icon-search"></p:menuitem>
+                <p:menuitem value="Meus DVDs" outcome="listaReservas" icon="ui-icon-search"></p:menuitem>
                 <p:menuitem value="Logout" action="#{loginControle.fazerLogout()}" icon="ui-icon-close" />
                 
             </p:menubar>
             <br/>
-            <p:dataTable widgetVar="Lista de Passagens" var="passagem" value="#{passagemControle.passagensDisponiveis}">
-                <f:facet name="header"> Lista de Passagens </f:facet>
+            <p:dataTable widgetVar="Lista de DVDS" var="dvd" value="#{dvdsControle.listaDeDvds}">
+                <f:facet name="header"> Lista de DVDS </f:facet>
             
-                <p:column sortBy="#{passagem.cidadeOrigem}" filterBy="#{passagem.cidadeOrigem}">
-                    <f:facet name="header" >Origem</f:facet>
-                    <h:outputText value="#{passagem.cidadeOrigem}"></h:outputText>
+                <p:column sortBy="#{dvd.titulo}" filterBy="#{dvd.titulo}">
+                    <f:facet name="header" >Titulo</f:facet>
+                    <h:outputText value="#{dvd.titulo}"></h:outputText>
                 </p:column>
                 
-                <p:column sortBy="#{passagem.cidadeDestino}" filterBy="#{passagem.cidadeDestino}">
-                    <f:facet name="header" >Destino</f:facet>
-                    <h:outputText value="#{passagem.cidadeDestino}"></h:outputText>
+                <p:column sortBy="#{dvd.genero}" filterBy="#{dvd.genero}">
+                    <f:facet name="header" >Genero</f:facet>
+                    <h:outputText value="#{dvd.genero}"></h:outputText>
                 </p:column>
                 
-                <p:column sortBy="#{passagem.data}" filterBy="#{passagem.data}">
-                    <f:facet name="header" >Data</f:facet>
-                    <h:outputText value="#{passagem.data}"> <f:convertDateTime pattern="d-MM-yyyy" /> </h:outputText>
+                <p:column sortBy="#{dvd.ano}" filterBy="#{dvd.ano}">
+                    <f:facet name="header" >Ano</f:facet>
+                    <h:outputText value="#{dvd.ano}"> <f:convertDateTime pattern="d-MM-yyyy" /> </h:outputText>
                 </p:column>
                 
-                <p:column sortBy="#{passagem.horario}" filterBy="#{passagem.horario}">
-                    <f:facet name="header" >Horário</f:facet>
-                    <h:outputText value="#{passagem.horario}"></h:outputText>
+                <p:column sortBy="#{dvd.emprestado}" filterBy="#{dvd.emprestado}">
+                    <f:facet name="header" >Emprestado para</f:facet>
+                    <h:outputText value="#{dvd.emprestado.nome}"></h:outputText>
                 </p:column>
-                
-                <p:column sortBy="#{passagem.valor}" filterBy="#{passagem.valor}">
-                    <f:facet name="header" >Valor</f:facet>
-                    <h:outputText value="#{passagem.valor}"></h:outputText>
+
+                <p:column headerText="Emprestar">
+                    <p:commandButton value="Emprestar" action="#{dvdsControle.emprestar(dvd, loginControle.userBO)}" actionListener="#{dvdsControle.reload()}" ></p:commandButton>
                 </p:column>
-                
-                <p:column sortBy="#{passagem.assento}" filterBy="#{passagem.assento}">
-                    <f:facet name="header" >Assento</f:facet>
-                    <h:outputText value="#{passagem.assento}"></h:outputText>
-                </p:column>
-                
-                <p:column headerText="Reserva">
-                    <p:commandButton value="Reservar" action="#{passagemControle.reservar(passagem)}" actionListener="#{passagemControle.reload()}" ></p:commandButton>
-                </p:column>
-                    
-                
-                </p:dataTable>  
+                                    
+            </p:dataTable>  
             
+            <h1>DVD's que foram emprestados para voce</h1>
+            <p:dataTable widgetVar="Lista de DVDS" var="dvd" value="#{dvdsControle.listaDeDvds}">
+                <p:column sortBy="#{dvd.titulo}" filterBy="#{dvd.titulo}">
+                    <f:facet name="header" >Titulo</f:facet>
+                    <h:outputText value="#{dvd.titulo}"></h:outputText>
+                </p:column>
+                
+                <p:column sortBy="#{dvd.genero}" filterBy="#{dvd.genero}">
+                    <f:facet name="header" >Genero</f:facet>
+                    <h:outputText value="#{dvd.genero}"></h:outputText>
+                </p:column>
+                
+                <p:column sortBy="#{dvd.ano}" filterBy="#{dvd.ano}">
+                    <f:facet name="header" >Ano</f:facet>
+                    <h:outputText value="#{dvd.ano}"></h:outputText>
+                </p:column>
+                                
+                <p:column sortBy="#{dvd.fkidCliente}" filterBy="#{dvd.fkidCliente}">
+                    <f:facet name="header" >Emprestado por</f:facet>
+                    <h:outputText value="#{dvd.fkidCliente.nome}"></h:outputText>
+                </p:column>
+                
+                <p:column headerText="Devolver">
+                    <p:commandButton value="Devolver" action="#{dvdsControle.devolver(dvd)}" actionListener="#{dvdsControle.reload()}" ></p:commandButton>
+                </p:column>
+            </p:dataTable>
         </h:form>    
     </h:body>
 </html>
